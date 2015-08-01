@@ -1,0 +1,27 @@
+{
+  "name": "stl-viewer",
+  "version": "0.0.0",
+  "description": "An STL file viewer",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/tmycnw/stl-viewer.git"
+  },
+  "keywords": [
+    "stl",
+    "stereolithography",
+    "viewer",
+    "3d",
+    "webgl",
+    "electron"
+  ],
+  "author": "Tommy Conway",
+  "license": "GPL",
+  "bugs": {
+    "url": "https://github.com/tmycnw/stl-viewer/issues"
+  },
+  "homepage": "https://github.com/tmycnw/stl-viewer"
+}
