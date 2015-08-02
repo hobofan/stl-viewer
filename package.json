@@ -23,5 +23,7 @@
   "bugs": {
     "url": "https://github.com/tmycnw/stl-viewer/issues"
   },
-  "homepage": "https://github.com/tmycnw/stl-viewer"
+  "homepage": "https://github.com/tmycnw/stl-viewer",
+  "devDependencies": {
+  }
 }
