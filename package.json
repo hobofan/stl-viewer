@@ -26,6 +26,7 @@
   "homepage": "https://github.com/tmycnw/stl-viewer",
   "devDependencies": {},
   "dependencies": {
+    "angular": "^1.4.3",
     "three": "^0.71.0"
   }
 }
