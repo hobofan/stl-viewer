@@ -24,7 +24,10 @@
     "url": "https://github.com/tmycnw/stl-viewer/issues"
   },
   "homepage": "https://github.com/tmycnw/stl-viewer",
-  "devDependencies": {},
+  "devDependencies": {
+    "jasmine": "^2.3.2",
+    "karma": "^0.13.8"
+  },
   "dependencies": {
     "angular": "^1.4.3",
     "three": "^0.71.0"
