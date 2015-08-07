@@ -26,6 +26,8 @@
   "homepage": "https://github.com/tmycnw/stl-viewer",
   "devDependencies": {
     "angular-mocks": "^1.4.3",
+    "grunt": "^0.4.5",
+    "grunt-contrib-jshint": "^0.11.2",
     "jasmine": "^2.3.2",
     "jasmine-core": "^2.3.4",
     "karma": "^0.13.8",
