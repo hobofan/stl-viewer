@@ -7,9 +7,7 @@
   </head>
   <body>
 
-    <div ng-controller="MainCtrl">
-      <input type="text" ng-model="sometext" />
-      <h1>{{ str }} {{ sometext }}</h1>
+    <div ng-controller="MainCtrl" ng-include="'app/controllers/mainCtrl.html'">
     </div>
 
     <script type="text/javascript" src="node_modules/angular/angular.min.js"></script>
