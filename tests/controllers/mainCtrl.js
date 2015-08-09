@@ -3,8 +3,10 @@ describe('MainCtrl', function () {
 
   beforeEach(module('stlApp'));
 
-  it('should do something', function () {
-    expect(true).toBe(true);
-    expect(false).toBe(false);
-  });
+  it('should do something', inject(function ($controller) {
+
+    var scope = {}, ctrl = $controller('MainCtrl', {$scope:scope});
+
+    expect(scope.str).toBeDefined();
+  }));
 });
