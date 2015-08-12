@@ -38,6 +38,7 @@
   },
   "dependencies": {
     "angular": "^1.4.3",
+    "stl-reader": "^2.1.0",
     "three": "^0.71.0"
   }
 }
