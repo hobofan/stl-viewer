@@ -17,19 +17,16 @@ var template = [
    submenu: [
      {
        label: 'Open',
-       click: function() { showOpen(); }
+       click: function() {
+         Dialog.showErrorBox("File Save Error", "File Save Error");
+         console.log("open-file");
+       }
      }
    ]
  }
 ]
 menu = Menu.buildFromTemplate(template);
 Menu.setApplicationMenu(menu);
-
-app.on('open-file', function(event, path) {
-  dialog.showErrorBox("File Save Error", "File Save Error");
-  console.log("open-file");
-  event.preventDefault();
-});
 
 // Quit when all windows are closed.
 app.on('window-all-closed', function() {
