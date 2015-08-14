@@ -18,8 +18,8 @@ var template = [
      {
        label: 'Open',
        click: function() {
-         Dialog.showErrorBox("File Save Error", "File Save Error");
-         console.log("open-file");
+         Dialog.showOpenDialog({ properties: [ 'openFile'],
+          filters: [{ name: 'Stereolithography (STL)', extensions: ['stl'] }]});
        }
      }
    ]

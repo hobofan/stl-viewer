@@ -5,8 +5,12 @@
 
     function () {
 
-      return {
+      function open() {
 
+      }
+
+      return {
+        open: open
       };
     }
   ]);
