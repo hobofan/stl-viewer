@@ -20,7 +20,9 @@
            label: 'Open',
            click: function() {
              Dialog.showOpenDialog(remote.getCurrentWindow(), { properties: [ 'openFile'],
-              filters: [{ name: 'Stereolithography (STL)', extensions: ['stl'] }]});
+              filters: [{ name: 'Stereolithography (STL)', extensions: ['stl'] }]}, function (fileName) {
+                console.log(fileName);
+              });
            }
          }
        ]
