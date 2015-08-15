@@ -14,17 +14,20 @@
 
     var template = [
      {
-       label: 'File',
-       submenu: [
-         {
-           label: 'Open',
-           click: function() {
-             Dialog.showOpenDialog(remote.getCurrentWindow(), { properties: [ 'openFile'],
-              filters: [{ name: 'Stereolithography (STL)', extensions: ['stl'] }]}, function (fileName) {
-                console.log(fileName);
-              });
-           }
-         }
+        label: 'File',
+        submenu: [
+          {
+            label: 'Open',
+            click: function() {
+              Dialog.showOpenDialog(remote.getCurrentWindow(), {
+                properties: [ 'openFile'],
+                filters: [{ name: 'STL', extensions: ['stl'] }]},
+                function (fileName) {
+                  console.log(fileName);
+                }
+              );
+            }
+          }
        ]
      }
    ];
