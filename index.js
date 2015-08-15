@@ -1,34 +1,12 @@
 var app = require('app');  // Module to control application life.
 var BrowserWindow = require('browser-window');  // Module to create native browser window.
 
-//var Menu = require('menu');
-//var Dialog = require('dialog');
-
 // Report crashes to our server.
 require('crash-reporter').start();
 
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is GCed.
 var mainWindow = null;
-
-/*
-var template = [
- {
-   label: 'File',
-   submenu: [
-     {
-       label: 'Open',
-       click: function() {
-         Dialog.showOpenDialog({ properties: [ 'openFile'],
-          filters: [{ name: 'Stereolithography (STL)', extensions: ['stl'] }]});
-       }
-     }
-   ]
- }
-]
-menu = Menu.buildFromTemplate(template);
-Menu.setApplicationMenu(menu);
-*/
 
 // Quit when all windows are closed.
 app.on('window-all-closed', function() {
