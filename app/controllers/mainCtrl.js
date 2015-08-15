@@ -4,6 +4,10 @@
 
   function createMenu() {
 
+    if (typeof require === 'undefined') {
+      return;
+    }
+
     var remote = require('remote');
     var Menu = remote.require('menu');
     var Dialog = remote.require('dialog');
