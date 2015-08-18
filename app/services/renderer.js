@@ -5,19 +5,21 @@
 
     function () {
 
-      var canvas, renderPending = false;
+      var canvas, renderPending = false, renderer;
 
       function init(c) {
 
         canvas = c;
 
         renderer = new THREE.WebGLRenderer({ canvas: canvas, antialias: true });
-        renderer.setClearColor(0xffffff);
+        //renderer.setClearColor(0xffffff);
+        renderer.setClearColor(0xff0000);
       }
 
       function render() {
 
         //renderer.render(scene, camera);
+        renderer.clear(true, true, true);
         renderPending = false;
       }
 

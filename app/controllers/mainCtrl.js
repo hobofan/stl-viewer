@@ -36,8 +36,20 @@
     Menu.setApplicationMenu(menu);
   }
 
-  app.controller('MainCtrl', function($scope) {
-    $scope.str = "some test string";
-    createMenu();
-  });
+  function setupWindowEventHandlers($window, renderer) {
+
+    angular.element($window).bind('resize', function () {
+
+      renderer.resize();
+    });    
+  }
+
+  app.controller('MainCtrl', ['$scope', '$window', 'stlRenderer',
+
+    function($scope, $window, stlRenderer) {
+      
+      createMenu();
+      setupWindowEventHandlers($window, stlRenderer);
+    }
+  ]);
 }());
