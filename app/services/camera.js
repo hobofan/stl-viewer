@@ -9,8 +9,13 @@
 
       camera = new THREE.OrthographicCamera(-1, 1, 1, -1, -1, 1);
 
+      function update(aspect, bbox) {
+
+      }
+
       return {
-      	camera: camera
+      	camera: camera,
+      	update: update
       };
     }
   ]);
