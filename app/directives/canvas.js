@@ -13,6 +13,15 @@
 
           stlRenderer.init(element[0]);
           stlRenderer.resize();
+
+          element.bind('mousedown', function (ev) {
+
+            ev.preventDefault();
+          });          
+
+          element.bind('mousemove', function (ev) {
+
+          });
         }
       };
     }
