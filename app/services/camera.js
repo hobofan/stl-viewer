@@ -5,8 +5,12 @@
 
     function () {
 
-      return {
+    	var camera;
 
+      camera = new THREE.OrthographicCamera(-1, 1, 1, -1, -1, 1);
+
+      return {
+      	camera: camera
       };
     }
   ]);
