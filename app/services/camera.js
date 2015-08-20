@@ -5,9 +5,7 @@
 
     function () {
 
-    	var camera;
-
-      camera = new THREE.OrthographicCamera(-1, 1, 1, -1, -1, 1);
+    	var camera = new THREE.OrthographicCamera(-1, 1, 1, -1, -1, 1);
 
       function update(aspect, bbox) {
 
