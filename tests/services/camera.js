@@ -17,9 +17,9 @@ describe('StlCamera', function () {
     expect(angular.isFunction(stlCamera.setMode)).toBe(true);
   }));
 
-  it('should have a rotate function',
+  it('should have a orient function',
   	inject(function (stlCamera) {
 
-    expect(angular.isFunction(stlCamera.rotate)).toBe(true);
+    expect(angular.isFunction(stlCamera.orient)).toBe(true);
   }));
 });

@@ -20,7 +20,9 @@
       	mode = m;
       }
 
-	    function rotate(quat) {
+	    function orient(quat) {
+
+	    	rotation.set(0, 0, 0, 1);
 	      rotation.multiply(quat);
 	    }
 
@@ -33,7 +35,7 @@
       	update: update,
       	modes: modes,
       	setMode: setMode,
-      	rotate: rotate
+      	orient: orient
       };
     }
   ]);
