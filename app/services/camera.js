@@ -26,6 +26,18 @@
 	      rotation.multiply(quat);
 	    }
 
+	    function mouseDown(pt) {
+
+	    }
+
+	    function mouseMove(pt) {
+
+	    }
+
+	    function mouseUp() {
+
+	    }
+
       function update(aspect, bbox) {
 
       }
@@ -35,7 +47,10 @@
       	update: update,
       	modes: modes,
       	setMode: setMode,
-      	orient: orient
+      	orient: orient,
+      	mouseDown: mouseDown,
+      	mouseMove: mouseMove,
+      	mouseUp: mouseUp
       };
     }
   ]);

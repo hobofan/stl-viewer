@@ -17,9 +17,12 @@ describe('StlCamera', function () {
     expect(angular.isFunction(stlCamera.setMode)).toBe(true);
   }));
 
-  it('should have a orient function',
+  it('should have a orient function and mouse handling functions',
   	inject(function (stlCamera) {
 
     expect(angular.isFunction(stlCamera.orient)).toBe(true);
+    expect(angular.isFunction(stlCamera.mouseDown)).toBe(true);
+    expect(angular.isFunction(stlCamera.mouseMove)).toBe(true);
+    expect(angular.isFunction(stlCamera.mouseUp)).toBe(true);
   }));
 });
