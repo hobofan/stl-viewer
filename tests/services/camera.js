@@ -16,4 +16,10 @@ describe('StlCamera', function () {
 		expect(stlCamera.modes).toBeDefined();
     expect(angular.isFunction(stlCamera.setMode)).toBe(true);
   }));
+
+  it('should have a rotate function',
+  	inject(function (stlCamera) {
+
+    expect(angular.isFunction(stlCamera.rotate)).toBe(true);
+  }));
 });

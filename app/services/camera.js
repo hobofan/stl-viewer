@@ -14,9 +14,15 @@
       },
       mode = modes.ROTATE;
 
+      var rotation = new THREE.Quaternion();
+
       function setMode(m) {
       	mode = m;
       }
+
+	    function rotate(quat) {
+	      rotation.multiply(quat);
+	    }
 
       function update(aspect, bbox) {
 
@@ -26,7 +32,8 @@
       	camera: camera,
       	update: update,
       	modes: modes,
-      	setMode: setMode
+      	setMode: setMode,
+      	rotate: rotate
       };
     }
   ]);
