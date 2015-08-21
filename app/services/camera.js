@@ -18,10 +18,6 @@
       	mode = m;
       }
 
-      function getMode() {
-      	return mode;
-      }
-
       function update(aspect, bbox) {
 
       }
@@ -30,8 +26,7 @@
       	camera: camera,
       	update: update,
       	modes: modes,
-      	setMode: setMode,
-      	getMode: getMode
+      	setMode: setMode
       };
     }
   ]);
