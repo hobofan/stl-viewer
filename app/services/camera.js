@@ -16,6 +16,7 @@
       var zoom = 1.0;
 
       var mousePos = new THREE.Vector2(0, 0);
+      var mouseDownPos = new THREE.Vector2(0, 0);
       var mousePosDiff = new THREE.Vector2(0, 0);
       var mousePressed = false;
 
@@ -53,6 +54,7 @@
 
 				mousePressed = true;
         mousePos.set(pt.X, pt.Y);
+        mouseDownPos.set(pt.X, pt.Y);
 	    }
 
 	    function mouseMove(pt) {
@@ -62,6 +64,7 @@
 	    	}
 
 				mousePosDiff.set(pt.X - pos.x, pt.Y - pos.y);
+        mousePos.set(pt.X, pt.Y);
 
 	    	if (mode === modes.ROTATE) {
 
@@ -78,6 +81,15 @@
 
 	    	} else if (mode === modes.ZOOM) {
 
+          var lastZoom = zoom;
+
+          zoom *= dd.y < 0 ? 0.9 : 1.1;
+          zoom = zoom > 20.0 ? 20.0 : zoom;
+          zoom = zoom < 0.1 ? 0.1 : zoom;
+
+          var zoomMultiplier = sceneScale * (lastZoom - zoom) / smallerDimension;
+          translation.x += -(mouseDownPos.x - width / 2.0) * zoomMultiplier;
+          translation.y += (mouseDownPos.y - height / 2.0) * zoomMultiplier;
 	    	}
 	    }
 
