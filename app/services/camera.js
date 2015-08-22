@@ -31,6 +31,10 @@
       var width = 1;
       var smallerDimension = 1;
 
+      var center = new THREE.Vector3();
+      var eye = new THREE.Vector3();
+      var up = new THREE.Vector3();
+
       function setSize(w, h, scale) {
 
         width = w;
@@ -85,7 +89,7 @@
 
           zoom *= dd.y < 0 ? 0.9 : 1.1;
           zoom = zoom > 20.0 ? 20.0 : zoom;
-          zoom = zoom < 0.1 ? 0.1 : zoom;
+          zoom = zoom < 0.05 ? 0.05 : zoom;
 
           var zoomMultiplier = sceneScale * (lastZoom - zoom) / smallerDimension;
           translation.x += -(mouseDownPos.x - width / 2.0) * zoomMultiplier;
@@ -100,6 +104,42 @@
 
       function update(aspect, bbox) {
 
+        var radius = bbox.max.distanceTo(bbox.min) / 2.0;
+        center.addVectors(bbox.min, bbox.max);
+        center.divideScalar(2.0);
+
+        eye.set(0, 0, radius);
+        eye.applyQuaternion(rotation);
+        eye.add(center);
+
+        up.set(0, 1, 0);
+        up.applyQuaternion(rotation);
+
+        camera.position.copy(eye);
+        camera.up = up;
+        camera.lookAt(center);
+
+        camera.left = -radius * sceneScale * zoom;
+        camera.right = radius * sceneScale * zoom;
+        camera.top = radius * sceneScale * zoom;
+        camera.bottom = -radius * sceneScale * zoom;
+        camera.near = -radius * sceneScale;
+        camera.far = radius * sceneScale;
+
+        if (aspect < 1.0) {
+          camera.bottom /= aspect;
+          camera.top /= aspect;
+        } else {
+          camera.left *= aspect;
+          camera.right *= aspect;
+        }
+
+        camera.left -= translation.x * radius * sceneScale;
+        camera.right -= translation.x * radius * sceneScale;
+        camera.top -= translation.y * radius * sceneScale;
+        camera.bottom -= translation.y * radius * sceneScale;
+
+        camera.updateProjectionMatrix();
       }
 
       return {
