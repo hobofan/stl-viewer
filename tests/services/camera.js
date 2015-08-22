@@ -3,18 +3,19 @@ describe('StlCamera', function () {
 
   beforeEach(module('stlApp'));
 
-  it('should have a camera property and an update function',
+  it('should have a camera and a modes property',
   	inject(function (stlCamera) {
 
     expect(stlCamera.camera).toBeDefined();
-    expect(angular.isFunction(stlCamera.update)).toBe(true);
+    expect(stlCamera.modes).toBeDefined();
   }));
 
-  it('should have a modes enum and functions to set the mode',
+  it('should have functions to set the mode and size and update the camera',
   	inject(function (stlCamera) {
 
-		expect(stlCamera.modes).toBeDefined();
     expect(angular.isFunction(stlCamera.setMode)).toBe(true);
+    expect(angular.isFunction(stlCamera.update)).toBe(true);
+    expect(angular.isFunction(stlCamera.setSize)).toBe(true);
   }));
 
   it('should have a orient function and mouse handling functions',

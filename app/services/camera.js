@@ -6,11 +6,15 @@
     function () {
 
     	var camera = new THREE.OrthographicCamera(-1, 1, 1, -1, -1, 1);
+      var sceneScale = 2.0;
 
 			var modes = { ROTATE: "rotate", PAN: "pan", ZOOM: "zoom"},
       	mode = modes.ROTATE;
 
       var rotation = new THREE.Quaternion();
+      var translation = new THREE.Vector2(0, 0);
+      var zoom = 1.0;
+
       var mousePos = new THREE.Vector2(0, 0);
       var mousePosDiff = new THREE.Vector2(0, 0);
       var mousePressed = false;
@@ -21,6 +25,19 @@
       var tempRotQuat = new THREE.Quaternion();
       var pitchAxis = new THREE.Vector3(0.0, 1.0, 0.0);
       var rollAxis = new THREE.Vector3(1.0, 0.0, 0.0);
+
+      var height = 1;
+      var width = 1;
+      var smallerDimension = 1;
+
+      function setSize(w, h, scale) {
+
+        width = w;
+        height = h;
+        sceneScale = scale;
+
+        smallerDimension = width < height ? width : height;
+      }
 
       function setMode(m) {
       	mode = m;
@@ -48,13 +65,16 @@
 
 	    	if (mode === modes.ROTATE) {
 
-      		tempRotQuat.setFromAxisAngle(pitchAxis, -dd.x * deltaToAngle);
+      		tempRotQuat.setFromAxisAngle(pitchAxis, -mousePosDiff.x * deltaToAngle);
       		rotation.multiply(tempRotQuat);
 
-      		tempRotQuat.setFromAxisAngle(rollAxis, -dd.y * deltaToAngle);
+      		tempRotQuat.setFromAxisAngle(rollAxis, -mousePosDiff.y * deltaToAngle);
       		rotation.multiply(tempRotQuat);
 
 	    	} else if (mode === modes.PAN) {
+
+          translation.x += (mousePosDiff.x * sceneScale * zoom) / smallerDimension;
+          translation.y += -(mousePosDiff.y * sceneScale * zoom) / smallerDimension;
 
 	    	} else if (mode === modes.ZOOM) {
 
@@ -78,7 +98,8 @@
       	orient: orient,
       	mouseDown: mouseDown,
       	mouseMove: mouseMove,
-      	mouseUp: mouseUp
+      	mouseUp: mouseUp,
+        setSize: setSize
       };
     }
   ]);
