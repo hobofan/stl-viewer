@@ -23,17 +23,9 @@
       var devicePixelRatio = window.devicePixelRatio || 1;
       var deltaToAngle = (Math.PI / 180.0) * 0.3 / devicePixelRatio;
 
-      var tempRotQuat = new THREE.Quaternion();
-      var pitchAxis = new THREE.Vector3(0.0, 1.0, 0.0);
-      var rollAxis = new THREE.Vector3(1.0, 0.0, 0.0);
-
       var height = 1;
       var width = 1;
       var smallerDimension = 1;
-
-      var center = new THREE.Vector3();
-      var eye = new THREE.Vector3();
-      var up = new THREE.Vector3();
 
       function setSize(w, h, scale) {
 
@@ -72,6 +64,10 @@
 
 	    	if (mode === modes.ROTATE) {
 
+          var tempRotQuat = new THREE.Quaternion();
+          var pitchAxis = new THREE.Vector3(0.0, 1.0, 0.0);
+          var rollAxis = new THREE.Vector3(1.0, 0.0, 0.0);
+
       		tempRotQuat.setFromAxisAngle(pitchAxis, -mousePosDiff.x * deltaToAngle);
       		rotation.multiply(tempRotQuat);
 
@@ -105,6 +101,10 @@
       function update(aspect, bbox) {
 
         var radius = bbox.max.distanceTo(bbox.min) / 2.0;
+        var center = new THREE.Vector3();
+        var eye = new THREE.Vector3();
+        var up = new THREE.Vector3();
+
         center.addVectors(bbox.min, bbox.max);
         center.divideScalar(2.0);
 
