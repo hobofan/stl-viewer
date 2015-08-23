@@ -57,19 +57,16 @@
 	    		return;
 	    	}
 
-        var diff = new THREE.Vector2(pt.X - mousePos.x, pt.Y - mousePos.y);
+        var diff = new THREE.Vector2(pt.X - mousePos.x, pt.Y - mousePos.y), m;
         mousePos.set(pt.X, pt.Y);
 
 	    	if (mode === modes.ROTATE) {
 
           var q = new THREE.Quaternion();
-          var m = (Math.PI / 180.0) * 0.3 / pixelRatio;
+          m = (Math.PI / 180.0) * 0.3 / pixelRatio;
 
-      		q.setFromAxisAngle(new THREE.Vector3(0, 1, 0), -diff.x * m);
-      		rotation.multiply(q);
-
-      		tempRotQuat.setFromAxisAngle(new THREE.Vector3(1, 0, 0), -diff.y * m);
-      		rotation.multiply(q);
+      		rotation.multiply(q.setFromAxisAngle(new THREE.Vector3(0, 1, 0), -diff.x * m));
+      		rotation.multiply(q.setFromAxisAngle(new THREE.Vector3(1, 0, 0), -diff.y * m));
 
 	    	} else if (mode === modes.PAN) {
 
@@ -81,12 +78,11 @@
           var lastZoom = zoom;
 
           zoom *= dd.y < 0 ? 0.9 : 1.1;
-          zoom = zoom > 20 ? 20 : zoom;
-          zoom = zoom < 0.05 ? 0.05 : zoom;
+          zoom.clamp(0.05, 20);
 
-          var zoomMultiplier = scale * (lastZoom - zoom) / smallerDimension;
-          translation.x += -(mouseDownPos.x - width / 2) * zoomMultiplier;
-          translation.y += (mouseDownPos.y - height / 2) * zoomMultiplier;
+          m = scale * (lastZoom - zoom) / smallerDimension;
+          translation.x += -(mouseDownPos.x - width / 2) * m;
+          translation.y += (mouseDownPos.y - height / 2) * m;
 	    	}
 	    }
 
