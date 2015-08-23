@@ -114,12 +114,8 @@
         camera.up = up;
         camera.lookAt(center);
 
-        var hAspect = 1.0, vAspect = 1.0;
-        if (aspect < 1.0) {
-          vAspect = 1.0/aspect;
-        } else {
-          hAspect = aspect;
-        }
+        var hAspect = (aspect > 1.0) ? aspect: 1.0;
+        var vAspect = (aspect < 1.0) ? 1.0/aspect: 1.0;
 
         camera.left = (-zoom * hAspect - translation.x) * rad;
         camera.right = (zoom * hAspect - translation.x) * rad;
