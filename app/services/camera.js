@@ -100,21 +100,14 @@
 
       function update(aspect, bbox) {
 
-        var rad = bbox.max.distanceTo(bbox.min) / 2.0;
-        var radScale = rad * scale;
+        var rad = bbox.max.distanceTo(bbox.min) * scale / 2.0;
 
         var center = new THREE.Vector3();
-        var eye = new THREE.Vector3();
-        var up = new THREE.Vector3();
+        var eye = new THREE.Vector3(0, 0, rad);
+        var up = new THREE.Vector3(0, 1, 0);
 
-        center.addVectors(bbox.min, bbox.max);
-        center.divideScalar(2.0);
-
-        eye.set(0, 0, rad);
-        eye.applyQuaternion(rotation);
-        eye.add(center);
-
-        up.set(0, 1, 0);
+        center.addVectors(bbox.min, bbox.max).divideScalar(2.0);
+        eye.applyQuaternion(rotation).add(center);
         up.applyQuaternion(rotation);
 
         camera.position.copy(eye);
@@ -128,12 +121,12 @@
           hAspect = aspect;
         }
 
-        camera.left = (-zoom * hAspect - translation.x) * radScale;
-        camera.right = (zoom * hAspect - translation.x) * radScale;
-        camera.top = (zoom * vAspect - translation.y) * radScale;
-        camera.bottom = (-zoom * vAspect - translation.y) * radScale;
-        camera.near = -radScale;
-        camera.far = radScale;
+        camera.left = (-zoom * hAspect - translation.x) * rad;
+        camera.right = (zoom * hAspect - translation.x) * rad;
+        camera.top = (zoom * vAspect - translation.y) * rad;
+        camera.bottom = (-zoom * vAspect - translation.y) * rad;
+        camera.near = -rad;
+        camera.far = rad;
 
         camera.updateProjectionMatrix();
       }
