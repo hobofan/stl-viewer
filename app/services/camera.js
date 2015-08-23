@@ -12,7 +12,7 @@
       	mode = modes.ROTATE;
 
       var rotation = new THREE.Quaternion();
-      var translation = new THREE.Vector2(0, 0);
+      var translation = new THREE.Vector2();
       var zoom = 1.0;
 
       var lastPt, downPt;
