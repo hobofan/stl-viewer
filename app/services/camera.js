@@ -15,13 +15,12 @@
       var translation = new THREE.Vector2(0, 0);
       var zoom = 1.0;
 
-      var mousePos, mouseDownPos;
+      var lastPt, downPt;
       var mousePressed = false;
 
       var pixelRatio = window.devicePixelRatio || 1;
 
-      var height = 1;
-      var width = 1;
+      var height = 1, width = 1;
 
       function resize(w, h) {
 
@@ -42,7 +41,7 @@
 	    function mouseDown(pt) {
 
 				mousePressed = true;
-        mousePos = mouseDownPos = pt;
+        lastPt = downPt = pt;
 	    }
 
 	    function mouseMove(pt) {
@@ -51,10 +50,10 @@
 	    		return;
 	    	}
 
-        var diff = { X:pt.X - mousePos.X, Y:pt.Y - mousePos.Y}, m;
+        var diff = { X:pt.X - lastPt.X, Y:pt.Y - lastPt.Y}, m;
         var smallerSide = width < height ? width : height;
 
-        mousePos = pt;
+        lastPt = pt;
 
 	    	if (mode === modes.ROTATE) {
 
@@ -67,8 +66,7 @@
 	    	} else if (mode === modes.PAN) {
 
           m = scale * zoom / smallerSide;
-          translation.x += diff.x * m;
-          translation.y += -diff.y * m;
+          translation.add((new THREE.Vector2(diff.x, -diff.y)).multiplyScalar(m));
 
 	    	} else if (mode === modes.ZOOM) {
 
@@ -78,8 +76,8 @@
           zoom.clamp(0.05, 20);
 
           m = scale * (lastZoom - zoom) / smallerSide;
-          translation.x += -(mouseDownPos.X - width / 2) * m;
-          translation.y += (mouseDownPos.Y - height / 2) * m;
+          translation.add((new THREE.Vector2(-(downPt.X - width/2),
+            downPt.Y - height/2)).multiplyScalar(m));
 	    	}
 	    }
 
