@@ -19,8 +19,7 @@
       var mouseDownPos = new THREE.Vector2(0, 0);
       var mousePressed = false;
 
-      var devicePixelRatio = window.devicePixelRatio || 1;
-      var deltaToAngle = (Math.PI / 180.0) * 0.3 / devicePixelRatio;
+      var pixelRatio = window.devicePixelRatio || 1;
 
       var height = 1;
       var width = 1;
@@ -58,38 +57,36 @@
 	    		return;
 	    	}
 
-        var mousePosDiff = new THREE.Vector2(0, 0);
-				mousePosDiff.set(pt.X - pos.x, pt.Y - pos.y);
+        var diff = new THREE.Vector2(pt.X - mousePos.x, pt.Y - mousePos.y);
         mousePos.set(pt.X, pt.Y);
 
 	    	if (mode === modes.ROTATE) {
 
-          var tempRotQuat = new THREE.Quaternion();
-          var pitchAxis = new THREE.Vector3(0.0, 1.0, 0.0);
-          var rollAxis = new THREE.Vector3(1.0, 0.0, 0.0);
+          var q = new THREE.Quaternion();
+          var m = (Math.PI / 180.0) * 0.3 / pixelRatio;
 
-      		tempRotQuat.setFromAxisAngle(pitchAxis, -mousePosDiff.x * deltaToAngle);
-      		rotation.multiply(tempRotQuat);
+      		q.setFromAxisAngle(new THREE.Vector3(0, 1, 0), -diff.x * m);
+      		rotation.multiply(q);
 
-      		tempRotQuat.setFromAxisAngle(rollAxis, -mousePosDiff.y * deltaToAngle);
-      		rotation.multiply(tempRotQuat);
+      		tempRotQuat.setFromAxisAngle(new THREE.Vector3(1, 0, 0), -diff.y * m);
+      		rotation.multiply(q);
 
 	    	} else if (mode === modes.PAN) {
 
-          translation.x += (mousePosDiff.x * sceneScale * zoom) / smallerDimension;
-          translation.y += -(mousePosDiff.y * sceneScale * zoom) / smallerDimension;
+          translation.x += (diff.x * scale * zoom) / smallerDimension;
+          translation.y += -(diff.y * scale * zoom) / smallerDimension;
 
 	    	} else if (mode === modes.ZOOM) {
 
           var lastZoom = zoom;
 
           zoom *= dd.y < 0 ? 0.9 : 1.1;
-          zoom = zoom > 20.0 ? 20.0 : zoom;
+          zoom = zoom > 20 ? 20 : zoom;
           zoom = zoom < 0.05 ? 0.05 : zoom;
 
-          var zoomMultiplier = sceneScale * (lastZoom - zoom) / smallerDimension;
-          translation.x += -(mouseDownPos.x - width / 2.0) * zoomMultiplier;
-          translation.y += (mouseDownPos.y - height / 2.0) * zoomMultiplier;
+          var zoomMultiplier = scale * (lastZoom - zoom) / smallerDimension;
+          translation.x += -(mouseDownPos.x - width / 2) * zoomMultiplier;
+          translation.y += (mouseDownPos.y - height / 2) * zoomMultiplier;
 	    	}
 	    }
 
@@ -100,13 +97,13 @@
 
       function update(aspect, bbox) {
 
-        var rad = bbox.max.distanceTo(bbox.min) * scale / 2.0;
+        var rad = bbox.max.distanceTo(bbox.min) * scale / 2;
 
         var center = new THREE.Vector3();
         var eye = new THREE.Vector3(0, 0, rad);
         var up = new THREE.Vector3(0, 1, 0);
 
-        center.addVectors(bbox.min, bbox.max).divideScalar(2.0);
+        center.addVectors(bbox.min, bbox.max).divideScalar(2);
         eye.applyQuaternion(rotation).add(center);
         up.applyQuaternion(rotation);
 
@@ -114,8 +111,8 @@
         camera.up = up;
         camera.lookAt(center);
 
-        var hAspect = (aspect > 1.0) ? aspect: 1.0;
-        var vAspect = (aspect < 1.0) ? 1.0/aspect: 1.0;
+        var hAspect = (aspect > 1) ? aspect: 1;
+        var vAspect = (aspect < 1) ? 1/aspect: 1;
 
         camera.left = (-zoom * hAspect - translation.x) * rad;
         camera.right = (zoom * hAspect - translation.x) * rad;
