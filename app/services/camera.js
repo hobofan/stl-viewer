@@ -6,7 +6,7 @@
     function () {
 
     	var camera = new THREE.OrthographicCamera(-1, 1, 1, -1, -1, 1);
-      var sceneScale = 2.0;
+      var scale = 2.0;
 
 			var modes = { ROTATE: "rotate", PAN: "pan", ZOOM: "zoom"},
       	mode = modes.ROTATE;
@@ -17,7 +17,6 @@
 
       var mousePos = new THREE.Vector2(0, 0);
       var mouseDownPos = new THREE.Vector2(0, 0);
-      var mousePosDiff = new THREE.Vector2(0, 0);
       var mousePressed = false;
 
       var devicePixelRatio = window.devicePixelRatio || 1;
@@ -27,11 +26,11 @@
       var width = 1;
       var smallerDimension = 1;
 
-      function setSize(w, h, scale) {
+      function setSize(w, h, s) {
 
         width = w;
         height = h;
-        sceneScale = scale;
+        scale = s;
 
         smallerDimension = width < height ? width : height;
       }
@@ -59,6 +58,7 @@
 	    		return;
 	    	}
 
+        var mousePosDiff = new THREE.Vector2(0, 0);
 				mousePosDiff.set(pt.X - pos.x, pt.Y - pos.y);
         mousePos.set(pt.X, pt.Y);
 
@@ -100,7 +100,9 @@
 
       function update(aspect, bbox) {
 
-        var radius = bbox.max.distanceTo(bbox.min) / 2.0;
+        var rad = bbox.max.distanceTo(bbox.min) / 2.0;
+        var radScale = rad * scale;
+
         var center = new THREE.Vector3();
         var eye = new THREE.Vector3();
         var up = new THREE.Vector3();
@@ -108,7 +110,7 @@
         center.addVectors(bbox.min, bbox.max);
         center.divideScalar(2.0);
 
-        eye.set(0, 0, radius);
+        eye.set(0, 0, rad);
         eye.applyQuaternion(rotation);
         eye.add(center);
 
@@ -119,25 +121,19 @@
         camera.up = up;
         camera.lookAt(center);
 
-        camera.left = -radius * sceneScale * zoom;
-        camera.right = radius * sceneScale * zoom;
-        camera.top = radius * sceneScale * zoom;
-        camera.bottom = -radius * sceneScale * zoom;
-        camera.near = -radius * sceneScale;
-        camera.far = radius * sceneScale;
-
+        var hAspect = 1.0, vAspect = 1.0;
         if (aspect < 1.0) {
-          camera.bottom /= aspect;
-          camera.top /= aspect;
+          vAspect = 1.0/aspect;
         } else {
-          camera.left *= aspect;
-          camera.right *= aspect;
+          hAspect = aspect;
         }
 
-        camera.left -= translation.x * radius * sceneScale;
-        camera.right -= translation.x * radius * sceneScale;
-        camera.top -= translation.y * radius * sceneScale;
-        camera.bottom -= translation.y * radius * sceneScale;
+        camera.left = (-zoom * hAspect - translation.x) * radScale;
+        camera.right = (zoom * hAspect - translation.x) * radScale;
+        camera.top = (zoom * vAspect - translation.y) * radScale;
+        camera.bottom = (-zoom * vAspect - translation.y) * radScale;
+        camera.near = -radScale;
+        camera.far = radScale;
 
         camera.updateProjectionMatrix();
       }
