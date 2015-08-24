@@ -20,7 +20,7 @@
     "electron"
   ],
   "author": "Tommy Conway",
-  "license": "GPL",
+  "license": "GPL-2.0",
   "bugs": {
     "url": "https://github.com/tmycnw/stl-viewer/issues"
   },
