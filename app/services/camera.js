@@ -15,8 +15,7 @@
       var translation = new THREE.Vector2();
       var zoom = 1.0;
 
-      var lastPt, downPt;
-      var mousePressed = false;
+      var lastPt, downPt, mousePressed = false;
 
       function resize(w, h) {
         width = w;
