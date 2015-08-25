@@ -8,4 +8,14 @@ describe('ThreeJS utilities', function () {
     expect(v.y).toEqual(2);
     expect(v.z).toEqual(3);
   });
+
+  // jshint multistr:true
+  it('should return a vector with components set to 0 when no parameters are \
+    passed into the vec3 function', function () {
+
+    var v = vec3();
+    expect(v.x).toEqual(0);
+    expect(v.y).toEqual(0);
+    expect(v.z).toEqual(0);
+  });
 });
