@@ -11,7 +11,7 @@
 			var modes = { ROTATE: "rotate", PAN: "pan", ZOOM: "zoom"},
       	mode = modes.ROTATE;
 
-      var rotation = new THREE.Quaternion();
+      var rotation = quat();
       var translation = vec2();
       var zoom = 1.0;
 
@@ -48,11 +48,10 @@
 
 	    	if (mode === modes.ROTATE) {
 
-          var q = new THREE.Quaternion();
           m = (Math.PI / 180.0) * 0.3 / (window.devicePixelRatio || 1);
 
-      		rotation.multiply(q.setFromAxisAngle(vec3(0, 1, 0), -diff.x * m));
-      		rotation.multiply(q.setFromAxisAngle(vec3(1, 0, 0), -diff.y * m));
+      		rotation.multiply(quat().setFromAxisAngle(vec3(0, 1, 0), -diff.x * m));
+      		rotation.multiply(quat().setFromAxisAngle(vec3(1, 0, 0), -diff.y * m));
 
 	    	} else if (mode === modes.PAN) {
 

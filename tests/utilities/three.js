@@ -34,4 +34,24 @@ describe('ThreeJS utilities', function () {
     expect(v.x).toEqual(0);
     expect(v.y).toEqual(0);
   });
+
+  it('should return a THREE.Quaternion from the quat function', function () {
+
+    var q = quat(1, 2, 3, 4);
+    expect(q.x).toEqual(1);
+    expect(q.y).toEqual(2);
+    expect(q.z).toEqual(3);
+    expect(q.w).toEqual(4);
+  });
+
+  // jshint multistr:true
+  it('should return a unit quaternion when no parameters are passed into the \
+    quat function', function () {
+
+    var q = quat();
+    expect(q.x).toEqual(0);
+    expect(q.y).toEqual(0);
+    expect(q.z).toEqual(0);
+    expect(q.w).toEqual(1);
+  });
 });

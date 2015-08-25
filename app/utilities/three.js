@@ -8,3 +8,8 @@ function vec2(x, y) {
   "use strict";
   return new THREE.Vector2(x, y);
 }
+
+function quat(x, y, z, w) {
+  "use strict";
+  return new THREE.Quaternion(x, y, z, w);
+}
