@@ -51,8 +51,8 @@
           var q = new THREE.Quaternion();
           m = (Math.PI / 180.0) * 0.3 / (window.devicePixelRatio || 1);
 
-      		rotation.multiply(q.setFromAxisAngle(new THREE.Vector3(0, 1, 0), -diff.x * m));
-      		rotation.multiply(q.setFromAxisAngle(new THREE.Vector3(1, 0, 0), -diff.y * m));
+      		rotation.multiply(q.setFromAxisAngle(vec3(0, 1, 0), -diff.x * m));
+      		rotation.multiply(q.setFromAxisAngle(vec3(1, 0, 0), -diff.y * m));
 
 	    	} else if (mode === modes.PAN) {
 
@@ -80,9 +80,9 @@
 
         var rad = bbox.max.distanceTo(bbox.min) * scale / 2;
 
-        var center = new THREE.Vector3();
-        var eye = new THREE.Vector3(0, 0, rad);
-        var up = new THREE.Vector3(0, 1, 0);
+        var center = vec3(0, 0, 0);
+        var eye = vec3(0, 0, rad);
+        var up = vec3(0, 1, 0);
 
         camera.position.copy(eye.applyQuaternion(rotation).add(center));
         camera.up = up.applyQuaternion(rotation);
