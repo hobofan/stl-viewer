@@ -12,7 +12,7 @@
       	mode = modes.ROTATE;
 
       var rotation = new THREE.Quaternion();
-      var translation = new THREE.Vector2();
+      var translation = vec2();
       var zoom = 1.0;
 
       var lastPt, downPt, mousePressed = false;
@@ -57,7 +57,7 @@
 	    	} else if (mode === modes.PAN) {
 
           m = scale * zoom / smallerSide;
-          translation.add((new THREE.Vector2(diff.x, -diff.y)).multiplyScalar(m));
+          translation.add(vec2(diff.x, -diff.y).multiplyScalar(m));
 
 	    	} else if (mode === modes.ZOOM) {
 
@@ -67,8 +67,7 @@
           zoom.clamp(0.05, 20);
 
           m = scale * (lastZoom - zoom) / smallerSide;
-          translation.add((new THREE.Vector2(-(downPt.X - width/2),
-            downPt.Y - height/2)).multiplyScalar(m));
+          translation.add(vec2(width/2 - downPt.X, downPt.Y - height/2).multiplyScalar(m));
 	    	}
 	    }
 

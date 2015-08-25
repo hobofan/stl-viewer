@@ -18,4 +18,20 @@ describe('ThreeJS utilities', function () {
     expect(v.y).toEqual(0);
     expect(v.z).toEqual(0);
   });
+
+  it('should return a THREE.Vector2 from the vec2 function', function () {
+
+    var v = vec2(1, 2);
+    expect(v.x).toEqual(1);
+    expect(v.y).toEqual(2);
+  });
+
+  // jshint multistr:true
+  it('should return a vector with components set to 0 when no parameters are \
+    passed into the vec2 function', function () {
+
+    var v = vec2();
+    expect(v.x).toEqual(0);
+    expect(v.y).toEqual(0);
+  });
 });
