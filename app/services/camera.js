@@ -6,7 +6,7 @@
     function () {
 
     	var camera = new THREE.OrthographicCamera(-1, 1, 1, -1, -1, 1);
-      var scale = 2.0;
+      var scale = 2.0, height = 1, width = 1;
 
 			var modes = { ROTATE: "rotate", PAN: "pan", ZOOM: "zoom"},
       	mode = modes.ROTATE;
@@ -18,12 +18,7 @@
       var lastPt, downPt;
       var mousePressed = false;
 
-      var pixelRatio = window.devicePixelRatio || 1;
-
-      var height = 1, width = 1;
-
       function resize(w, h) {
-
         width = w;
         height = h;
       }
@@ -33,19 +28,16 @@
       }
 
 	    function orient(quat) {
-
 	    	rotation.set(0, 0, 0, 1);
 	      rotation.multiply(quat);
 	    }
 
 	    function mouseDown(pt) {
-
 				mousePressed = true;
         lastPt = downPt = pt;
 	    }
 
 	    function mouseMove(pt) {
-
 	    	if (mousePressed) {
 	    		return;
 	    	}
@@ -58,7 +50,7 @@
 	    	if (mode === modes.ROTATE) {
 
           var q = new THREE.Quaternion();
-          m = (Math.PI / 180.0) * 0.3 / pixelRatio;
+          m = (Math.PI / 180.0) * 0.3 / (window.devicePixelRatio || 1);
 
       		rotation.multiply(q.setFromAxisAngle(new THREE.Vector3(0, 1, 0), -diff.x * m));
       		rotation.multiply(q.setFromAxisAngle(new THREE.Vector3(1, 0, 0), -diff.y * m));
@@ -82,7 +74,6 @@
 	    }
 
 	    function mouseUp() {
-
 	    	mousePressed = false;
 	    }
 
