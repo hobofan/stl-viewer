@@ -1,8 +1,5 @@
 
-(function () {
+function vec3(x, y, z) {
   "use strict";
-
-  function vec3(x, y, z) {
-    return new THREE.Vector3(x, y, z);
-  }
-}());
+  return new THREE.Vector3(x, y, z);
+}
