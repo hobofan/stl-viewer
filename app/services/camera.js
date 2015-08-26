@@ -41,7 +41,7 @@
 	    		return;
 	    	}
 
-        var diff = { X:pt.X - lastPt.X, Y:pt.Y - lastPt.Y}, m;
+        var diff = { x:pt.X - lastPt.X, y:pt.Y - lastPt.Y}, m;
         var smallerSide = width < height ? width : height;
 
         lastPt = pt;
