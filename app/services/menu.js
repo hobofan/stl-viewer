@@ -1,9 +1,18 @@
 (function () {
   "use strict";
 
-  app.service('stlMenu', [
+  app.service('stlMenu', ['stlModel',
 
-    function () {
+    function (stlModel) {
+
+      function toArrayBuffer(buffer) {
+        var ab = new ArrayBuffer(buffer.length);
+        var view = new Uint8Array(ab);
+        for (var i = 0; i < buffer.length; ++i) {
+          view[i] = buffer[i];
+        }
+        return ab;
+      }
 
 		  function create() {
 
@@ -12,8 +21,9 @@
 		    }
 
 		    var remote = require('remote');
-		    var Menu = remote.require('menu');
-		    var Dialog = remote.require('dialog');
+		    var menu = remote.require('menu');
+		    var dialog = remote.require('dialog');
+        var fs = remote.require('fs');
 
 		    var template = [
 		     {
@@ -22,11 +32,19 @@
 		          {
 		            label: 'Open',
 		            click: function() {
-		              Dialog.showOpenDialog(remote.getCurrentWindow(), {
+		              dialog.showOpenDialog(remote.getCurrentWindow(), {
 		                properties: [ 'openFile'],
 		                filters: [{ name: 'STL', extensions: ['stl'] }]},
 		                function (fileName) {
-		                  console.log(fileName);
+		                  if (fileName && fileName.length > 0) {
+                        fs.readFile(fileName[0], function read(err, data) {
+                          if (err) {
+                            return;
+                          }
+
+                          stlModel.open(toArrayBuffer(data));
+                        });
+                      }
 		                }
 		              );
 		            }
@@ -35,8 +53,8 @@
 		     }
 		   ];
 
-		    var menu = Menu.buildFromTemplate(template);
-		    Menu.setApplicationMenu(menu);
+		    var m = menu.buildFromTemplate(template);
+		    menu.setApplicationMenu(m);
 		  }
 
       return {

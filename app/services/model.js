@@ -7,36 +7,31 @@
 
       function open(data, callback) {
 
-        var reader = new FileReader();
+        (new StlReader()).read(data, function (vn, v, n) {
 
-        reader.onload = function () {
+          if (v && v.length > 3) {
 
-          (new StlReader()).read(reader.result, function (vn, v, n) {
+            var material = new THREE.MeshLambertMaterial({
+              color: 0xccc,
+              side: THREE.DoubleSide
+            });
 
-            if (v && v.length > 3) {
+            material.polygonOffset = true;
+            material.polygonOffsetFactor = 1.0;
+            material.polygonOffsetUnits = 1.0;
 
-              var material = new THREE.MeshLambertMaterial({
-                color: 0xccc,
-                side: THREE.DoubleSide
-              });
+            var geometry = new THREE.BufferGeometry();
+            geometry.addAttribute('position', new THREE.BufferAttribute(v, 3));
+            geometry.addAttribute('normal', new THREE.BufferAttribute(n, 3));
+            var mesh = new THREE.Mesh(geometry, material);
 
-              material.polygonOffset = true;
-              material.polygonOffsetFactor = 1.0;
-              material.polygonOffsetUnits = 1.0;
+            console.log(mesh);
 
-              var geometry = new THREE.BufferGeometry();
-              geometry.addAttribute('position', new THREE.BufferAttribute(v, 3));
-              geometry.addAttribute('normal', new THREE.BufferAttribute(n, 3));
-              mesh = new THREE.Mesh(geometry, material);
-
-              if (callback) {
-                callback();
-              }
+            if (callback) {
+              callback();
             }
-          });
-        };
-
-        reader.readAsArrayBuffer(data);
+          }
+        });
       }
 
       return {
