@@ -25,8 +25,6 @@
             geometry.addAttribute('normal', new THREE.BufferAttribute(n, 3));
             var mesh = new THREE.Mesh(geometry, material);
 
-            console.log(mesh);
-
             if (callback) {
               callback();
             }
