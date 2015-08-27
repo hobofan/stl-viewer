@@ -1,9 +1,9 @@
 (function () {
   "use strict";
 
-  app.service('stlRenderer', [
+  app.service('stlRenderer', ['stlCamera',
 
-    function () {
+    function (stlCamera) {
 
       var canvas, renderPending = false, renderer;
 
@@ -12,14 +12,14 @@
         canvas = c;
 
         renderer = new THREE.WebGLRenderer({ canvas: canvas, antialias: true });
-        //renderer.setClearColor(0xffffff);
-        renderer.setClearColor(0xff0000);
+        renderer.setClearColor(0xffffff);
       }
 
       function render() {
 
         //renderer.render(scene, camera);
         renderer.clear(true, true, true);
+
         renderPending = false;
       }
 
@@ -34,6 +34,14 @@
 
       function resize() {
 
+        var pixelRatio = window.devicePixelRatio || 1;
+
+        canvas.width = Math.round(canvas.clientWidth * pixelRatio);
+        canvas.height = Math.round(canvas.clientHeight * pixelRatio);
+
+        stlCamera.resize(canvas.width, canvas.height);
+
+        renderer.setViewport(0, 0, canvas.width, canvas.height);
         requestRender();
       }
 

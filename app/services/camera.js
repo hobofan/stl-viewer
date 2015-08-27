@@ -63,7 +63,7 @@
           var lastZoom = zoom;
 
           zoom *= diff.y < 0 ? 0.9 : 1.1;
-          zoom.clamp(0.05, 20);
+          zoom = zoom.clamp(0.05, 20);
 
           m = scale * (lastZoom - zoom) / smallerSide;
           translation.add(vec2(width/2 - downPt.X, downPt.Y - height/2).multiplyScalar(m));
