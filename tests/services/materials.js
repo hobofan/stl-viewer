@@ -8,4 +8,11 @@ describe('StlMaterials', function () {
 
     expect(stlMaterials.defaultMaterial).toBeDefined();
   }));
+
+  it('should have materials of the correct types',
+    inject(function (stlMaterials) {
+
+    expect(stlMaterials.defaultMaterial instanceof
+      THREE.MeshLambertMaterial).toBe(true);
+  }));
 });
