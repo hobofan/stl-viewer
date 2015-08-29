@@ -7,6 +7,9 @@
 
 		  function create() {
 
+        var remote = require('remote');
+        var menu = remote.require('menu');
+
 		    if (typeof require === 'undefined') {
 		      return;
 		    }

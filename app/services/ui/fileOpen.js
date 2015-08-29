@@ -8,7 +8,6 @@
       function open() {
 
         var remote = require('remote');
-        var menu = remote.require('menu');
         var dialog = remote.require('dialog');
         var fs = remote.require('fs');
 

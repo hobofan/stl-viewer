@@ -20,7 +20,7 @@
         stlCamera.update(canvas.width / canvas.height, stlScene.getBox());
 
         renderer.clear(true, true, true);
-        renderer.render(stlScene, stlCamera);
+        renderer.render(stlScene.scene, stlCamera.camera);
 
         renderPending = false;
       }
