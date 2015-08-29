@@ -1,9 +1,9 @@
 (function () {
   "use strict";
 
-  app.service('stlRenderer', ['stlCamera',
+  app.service('stlRenderer', ['stlCamera', 'stlScene',
 
-    function (stlCamera) {
+    function (stlCamera, stlScene) {
 
       var canvas, renderPending = false, renderer;
 
@@ -11,14 +11,16 @@
 
         canvas = c;
 
-        renderer = new THREE.WebGLRenderer({ canvas: canvas, antialias: true });
+        renderer = new THREE.WebGLRenderer({ canvas: canvas });
         renderer.setClearColor(0xffffff);
       }
 
       function render() {
 
-        //renderer.render(scene, camera);
+        stlCamera.update(canvas.width / canvas.height, stlScene.getBox());
+
         renderer.clear(true, true, true);
+        renderer.render(stlScene, stlCamera);
 
         renderPending = false;
       }
