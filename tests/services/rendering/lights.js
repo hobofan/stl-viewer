@@ -16,4 +16,10 @@ describe('StlLights', function () {
     expect(stlLights.light1 instanceof THREE.DirectionalLight).toBe(true);
     expect(stlLights.light2 instanceof THREE.DirectionalLight).toBe(true);
   }));
+
+  it('should have an update function',
+    inject(function (stlLights) {
+
+    expect(angular.isFunction(stlLights.update)).toBe(true);
+  }));
 });

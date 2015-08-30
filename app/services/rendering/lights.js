@@ -18,9 +18,14 @@
       light1 = createLight(0xffffff, vec3(0, 0, -1));
       light2 = createLight(0xffffff, vec3(1, 1, 0));
 
+      function update() {
+
+      }
+
       return {
         light1: light1,
-        light2: light2
+        light2: light2,
+        update: update
       };
     }
   ]);
