@@ -1,13 +1,13 @@
 (function () {
   "use strict";
 
-  app.service('stlModel', ['stlMaterials', 'stlScene',
+  app.service('stlModel', ['stlMaterials', 'stlScene', 'stlRenderer',
 
-    function (stlMaterials, stlScene) {
+    function (stlMaterials, stlScene, stlRenderer) {
 
       var mesh;
 
-      function open(data, callback) {
+      function open(data) {
 
         (new StlReader()).read(data, function (vn, v, n) {
 
@@ -23,10 +23,7 @@
             mesh = new THREE.Mesh(geometry, stlMaterials.defaultMaterial);
 
             stlScene.add(mesh);
-
-            if (callback) {
-              callback();
-            }
+            stlRenderer.requestRender();
           }
         });
       }
