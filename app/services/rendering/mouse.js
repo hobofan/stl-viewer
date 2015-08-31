@@ -5,14 +5,17 @@
 
     function () {
 
-      var mousePressed = false;
+      var lastPt, downPt, mousePressed = false;
 
       function down(pt) {
+
         mousePressed = true;
+        lastPt = downPt = pt;
       }
 
       function move(pt) {
 
+        lastPt = pt;
       }
 
       function up(pt) {
@@ -23,11 +26,16 @@
         return mousePressed;
       }
 
+      function downPoint() {
+        return downPt;
+      }
+
       return {
         down: down,
         move: move,
         up: up,
-        isMousePressed: isMousePressed
+        isMousePressed: isMousePressed,
+        downPoint: downPoint
       };
     }
   ]);
