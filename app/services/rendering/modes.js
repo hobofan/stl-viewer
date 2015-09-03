@@ -1,5 +1,5 @@
 (function () {
-  "use strict"
+  "use strict";
 
   app.service('stlModes', [
 
@@ -11,12 +11,12 @@
         mode = m;
       }
 
-      function mode() {
+      function getMode() {
         return mode;
       }
 
       return {
-        mode: mode,
+        getMode: getMode,
         setMode: setMode
       };
     }
