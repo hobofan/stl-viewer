@@ -5,7 +5,7 @@
 
     function () {
 
-      var lastPt, downPt, mousePressed = false;
+      var lastPt, downPt, deltaPt, mousePressed = false;
 
       function down(pt) {
 
@@ -15,6 +15,7 @@
 
       function move(pt) {
 
+        deltaPt = { x:pt.X - lastPt.X, y:pt.Y - lastPt.Y};
         lastPt = pt;
       }
 
@@ -30,12 +31,17 @@
         return downPt;
       }
 
+      function delta() {
+        return deltaPt;
+      }
+
       return {
         down: down,
         move: move,
         up: up,
         isMousePressed: isMousePressed,
-        downPoint: downPoint
+        downPoint: downPoint,
+        delta: delta
       };
     }
   ]);

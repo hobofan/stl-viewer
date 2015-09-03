@@ -38,7 +38,7 @@ describe('StlMouse', function () {
     expect(angular.isFunction(stlMouse.downPoint)).toBe(true);
   }));
 
-  it('should corretly return the mouse down position when the downPoint \
+  it('should correctly return the mouse down position when the downPoint \
     function is called',
     inject(function (stlMouse) {
 
@@ -46,5 +46,11 @@ describe('StlMouse', function () {
     stlMouse.down(pt);
 
     expect(stlMouse.downPoint()).toEqual(pt);
+  }));
+
+  it('should have a function to get the delta movement when the mouse is moved',
+    inject(function (stlMouse) {
+
+    expect(angular.isFunction(stlMouse.delta)).toBe(true);
   }));
 });
