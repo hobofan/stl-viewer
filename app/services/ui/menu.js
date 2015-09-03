@@ -23,7 +23,16 @@
 		            click: stlFileOpen.open
 		          }
 		       ]
-		     }
+		     },
+        {
+          label: 'View',
+          submenu: [
+            {
+              label: 'Reset',
+              click: stlFileOpen.open
+            }
+         ]
+        }
 		   ];
 
 		    var m = menu.buildFromTemplate(template);
