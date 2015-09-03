@@ -53,4 +53,17 @@ describe('StlMouse', function () {
 
     expect(angular.isFunction(stlMouse.delta)).toBe(true);
   }));
+
+  it('should return the correct return the delta movement',
+    inject(function (stlMouse) {
+
+    var downPt = { X: 1, Y: 2};
+    var movePt = { X: 3, Y: 5};
+
+    stlMouse.down(downPt);
+    stlMouse.move(movePt);
+
+    var deltaPt = stlMouse.delta();
+    expect(deltaPt).toEqual({ X: 2, Y: 3});
+  }));
 });

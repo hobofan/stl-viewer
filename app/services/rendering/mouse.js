@@ -15,7 +15,7 @@
 
       function move(pt) {
 
-        deltaPt = { x:pt.X - lastPt.X, y:pt.Y - lastPt.Y};
+        deltaPt = { X:pt.X - lastPt.X, Y:pt.Y - lastPt.Y};
         lastPt = pt;
       }
 
