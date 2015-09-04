@@ -13,8 +13,20 @@
 
       var mode = modes.ROTATE;
 
+      function isValid(m) {
+        if (m === modes.ROTATE || m === modes.PAN ||
+          m === modes.ZOOM) {
+          return true;
+        }
+
+        return false;
+      }
+
       function setMode(m) {
-        mode = m;
+
+        if (isValid(m)) {
+          mode = m;
+        }
       }
 
       function getMode() {

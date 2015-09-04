@@ -33,4 +33,13 @@ describe('StlModes', function () {
       expect(stlModes.modes.ZOOM).toBeDefined();
     }
   ));
+
+  it('should not allow setting of an unsupported mode', inject(
+    function (stlModes) {
+
+      stlModes.setMode(stlModes.modes.PAN);
+      stlModes.setMode("invalid");
+      expect(stlModes.getMode()).toEqual(stlModes.modes.PAN);
+    }
+  ));
 });
