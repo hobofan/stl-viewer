@@ -9,4 +9,13 @@ describe('StlModes', function () {
       expect(angular.isFunction(stlModes.setMode)).toBe(true);
     }
   ));
+
+  it('should have a modes property with the various modes defined', inject(
+    function (stlModes) {
+      expect(stlModes.modes).toBeDefined();
+      expect(stlModes.modes.ROTATE).toBeDefined();
+      expect(stlModes.modes.PAN).toBeDefined();
+      expect(stlModes.modes.ZOOM).toBeDefined();
+    }
+  ));
 });

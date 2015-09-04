@@ -5,6 +5,12 @@
 
     function () {
 
+      var modes = {
+        ROTATE: 'rotate',
+        PAN: 'pan',
+        ZOOM: 'zoom'
+      };
+
       var mode;
 
       function setMode(m) {
@@ -16,6 +22,7 @@
       }
 
       return {
+        modes: modes,
         getMode: getMode,
         setMode: setMode
       };
