@@ -11,7 +11,7 @@
         ZOOM: 'zoom'
       };
 
-      var mode;
+      var mode = modes.ROTATE;
 
       function setMode(m) {
         mode = m;

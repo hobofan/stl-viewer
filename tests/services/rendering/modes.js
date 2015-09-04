@@ -10,6 +10,21 @@ describe('StlModes', function () {
     }
   ));
 
+  it('should return the mode that was set earlier', inject(
+    function (stlModes) {
+
+      stlModes.setMode(stlModes.modes.PAN);
+      expect(stlModes.getMode()).toEqual(stlModes.modes.PAN);
+    }
+  ));
+
+  it('should return the rotate mode by default', inject(
+    function (stlModes) {
+
+      expect(stlModes.getMode()).toEqual(stlModes.modes.ROTATE);
+    }
+  ));
+
   it('should have a modes property with the various modes defined', inject(
     function (stlModes) {
       expect(stlModes.modes).toBeDefined();
