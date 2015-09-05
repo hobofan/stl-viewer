@@ -1,15 +1,12 @@
 (function () {
   "use strict";
 
-  app.service('stlCamera', [
+  app.service('stlCamera', ['stlModes',
 
-    function () {
+    function (stlModes) {
 
     	var camera = new THREE.OrthographicCamera(-1, 1, 1, -1, -1, 1);
       var scale = 2.0, height = 1, width = 1;
-
-			var modes = { ROTATE: "rotate", PAN: "pan", ZOOM: "zoom"},
-      	mode = modes.ROTATE;
 
       var rotation = quat();
       var translation = vec2();
@@ -20,10 +17,6 @@
       function resize(w, h) {
         width = w;
         height = h;
-      }
-
-      function setMode(m) {
-      	mode = m;
       }
 
 	    function orient(quat) {
@@ -102,8 +95,6 @@
       return {
       	camera: camera,
       	update: update,
-      	modes: modes,
-      	setMode: setMode,
       	orient: orient,
       	mouseDown: mouseDown,
       	mouseMove: mouseMove,
