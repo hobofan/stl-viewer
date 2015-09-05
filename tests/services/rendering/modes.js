@@ -42,4 +42,12 @@ describe('StlModes', function () {
       expect(stlModes.getMode()).toEqual(stlModes.modes.PAN);
     }
   ));
+
+  it('should have helper functions to check for the current mode type', inject(
+    function (stlModes) {
+      expect(angular.isFunction(stlModes.shouldRotate)).toBe(true);
+      expect(angular.isFunction(stlModes.shouldPan)).toBe(true);
+      expect(angular.isFunction(stlModes.shouldZoom)).toBe(true);
+    }
+  ));
 });

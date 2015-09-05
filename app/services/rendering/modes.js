@@ -33,10 +33,25 @@
         return mode;
       }
 
+      function shouldRotate() {
+        return mode === modes.ROTATE;
+      }
+
+      function shouldPan() {
+        return mode === modes.PAN;
+      }
+
+      function shouldZoom() {
+        return mode === modes.ZOOM;
+      }
+
       return {
         modes: modes,
         getMode: getMode,
-        setMode: setMode
+        setMode: setMode,
+        shouldRotate: shouldRotate,
+        shouldPan: shouldPan,
+        shouldZoom: shouldZoom
       };
     }
   ]);
