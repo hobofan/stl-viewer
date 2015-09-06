@@ -39,19 +39,19 @@
 
         lastPt = pt;
 
-	    	if (mode === modes.ROTATE) {
+	    	if (stlModes.shouldRotate()) {
 
           m = (Math.PI / 180.0) * 0.3 / (window.devicePixelRatio || 1);
 
       		rotation.multiply(quat().setFromAxisAngle(vec3(0, 1, 0), -diff.x * m));
       		rotation.multiply(quat().setFromAxisAngle(vec3(1, 0, 0), -diff.y * m));
 
-	    	} else if (mode === modes.PAN) {
+	    	} else if (stlModes.shouldPan()) {
 
           m = scale * zoom / smallerSide;
           translation.add(vec2(diff.x, -diff.y).multiplyScalar(m));
 
-	    	} else if (mode === modes.ZOOM) {
+	    	} else if (stlModes.shouldZoom()) {
 
           var lastZoom = zoom;
 
