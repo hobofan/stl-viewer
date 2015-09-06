@@ -20,8 +20,5 @@ describe('StlCamera', function () {
   	inject(function (stlCamera) {
 
     expect(angular.isFunction(stlCamera.orient)).toBe(true);
-    expect(angular.isFunction(stlCamera.mouseDown)).toBe(true);
-    expect(angular.isFunction(stlCamera.mouseMove)).toBe(true);
-    expect(angular.isFunction(stlCamera.mouseUp)).toBe(true);
   }));
 });

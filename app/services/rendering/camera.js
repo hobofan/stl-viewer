@@ -12,8 +12,6 @@
       var translation = vec2();
       var zoom = 1.0;
 
-      var lastPt, downPt, mousePressed = false;
-
       function resize(w, h) {
         width = w;
         height = h;
@@ -22,11 +20,6 @@
 	    function orient(quat) {
 	    	rotation.set(0, 0, 0, 1);
 	      rotation.multiply(quat);
-	    }
-
-	    function mouseDown(pt) {
-				mousePressed = true;
-        lastPt = downPt = pt;
 	    }
 
 	    function mouseMove(pt) {
@@ -63,10 +56,6 @@
 	    	}
 	    }
 
-	    function mouseUp() {
-	    	mousePressed = false;
-	    }
-
       function update(aspect, bbox) {
 
         var rad = bbox.max.distanceTo(bbox.min) * scale / 2;
@@ -96,9 +85,6 @@
       	camera: camera,
       	update: update,
       	orient: orient,
-      	mouseDown: mouseDown,
-      	mouseMove: mouseMove,
-      	mouseUp: mouseUp,
         resize: resize
       };
     }
