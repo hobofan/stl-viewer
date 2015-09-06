@@ -1,9 +1,9 @@
 (function () {
   "use strict";
 
-  app.service('stlCamera', ['stlModes',
+  app.service('stlCamera', ['stlModes', 'stlMouse',
 
-    function (stlModes) {
+    function (stlModes, stlMouse) {
 
     	var camera = new THREE.OrthographicCamera(-1, 1, 1, -1, -1, 1);
       var scale = 2.0, height = 1, width = 1;
@@ -22,33 +22,34 @@
 	      rotation.multiply(quat);
 	    }
 
-	    function mouseMove(pt) {
-	    	if (mousePressed) {
+	    function move() {
+	    	if (!stlMouse.isMousePressed()) {
 	    		return;
 	    	}
 
-        var diff = { x:pt.X - lastPt.X, y:pt.Y - lastPt.Y}, m;
-        var smallerSide = width < height ? width : height;
+        var delta = stlMouse.delta();
+        var downPt = stlMouse.downPoint();
 
-        lastPt = pt;
+        var smallerSide = width < height ? width : height;
+        var m;
 
 	    	if (stlModes.shouldRotate()) {
 
           m = (Math.PI / 180.0) * 0.3 / (window.devicePixelRatio || 1);
 
-      		rotation.multiply(quat().setFromAxisAngle(vec3(0, 1, 0), -diff.x * m));
-      		rotation.multiply(quat().setFromAxisAngle(vec3(1, 0, 0), -diff.y * m));
+      		rotation.multiply(quat().setFromAxisAngle(vec3(0, 1, 0), -delta.X * m));
+      		rotation.multiply(quat().setFromAxisAngle(vec3(1, 0, 0), -delta.Y * m));
 
 	    	} else if (stlModes.shouldPan()) {
 
           m = scale * zoom / smallerSide;
-          translation.add(vec2(diff.x, -diff.y).multiplyScalar(m));
+          translation.add(vec2(delta.X, -delta.Y).multiplyScalar(m));
 
 	    	} else if (stlModes.shouldZoom()) {
 
           var lastZoom = zoom;
 
-          zoom *= diff.y < 0 ? 0.9 : 1.1;
+          zoom *= delta.Y < 0 ? 0.9 : 1.1;
           zoom = zoom.clamp(0.05, 20);
 
           m = scale * (lastZoom - zoom) / smallerSide;
@@ -85,7 +86,8 @@
       	camera: camera,
       	update: update,
       	orient: orient,
-        resize: resize
+        resize: resize,
+        move: move
       };
     }
   ]);
