@@ -6,7 +6,7 @@
     function () {
 
       var defaultMaterial = new THREE.MeshLambertMaterial({
-              color: 0xccc,
+              color: 0xcccccc,
               side: THREE.DoubleSide
             });
 

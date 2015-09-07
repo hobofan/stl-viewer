@@ -22,9 +22,17 @@
 
       }
 
+      function getFirstLight() {
+        return light1;
+      }
+
+      function getSecondLight() {
+        return light2;
+      }
+
       return {
-        light1: light1,
-        light2: light2,
+        getFirstLight: getFirstLight,
+        getSecondLight: getSecondLight,
         update: update
       };
     }

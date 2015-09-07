@@ -3,18 +3,18 @@ describe('StlLights', function () {
 
   beforeEach(module('stlApp'));
 
-  it('should have a light1 and a light2 property',
+  it('should have functions to get the two lights',
     inject(function (stlLights) {
 
-    expect(stlLights.light1).toBeDefined();
-    expect(stlLights.light2).toBeDefined();
+    expect(angular.isFunction(stlLights.getFirstLight)).toBe(true);
+    expect(angular.isFunction(stlLights.getSecondLight)).toBe(true);
   }));
 
   it('should light properties of the correct type',
     inject(function (stlLights) {
 
-    expect(stlLights.light1 instanceof THREE.DirectionalLight).toBe(true);
-    expect(stlLights.light2 instanceof THREE.DirectionalLight).toBe(true);
+    expect(stlLights.getFirstLight() instanceof THREE.DirectionalLight).toBe(true);
+    expect(stlLights.getSecondLight() instanceof THREE.DirectionalLight).toBe(true);
   }));
 
   it('should have an update function',

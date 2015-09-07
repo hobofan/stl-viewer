@@ -1,9 +1,9 @@
 (function () {
   "use strict";
 
-  app.service('stlRenderer', ['stlCamera', 'stlScene',
+  app.service('stlRenderer', ['stlCamera', 'stlScene', 'stlLights',
 
-    function (stlCamera, stlScene) {
+    function (stlCamera, stlScene, stlLights) {
 
       var canvas, renderPending = false, renderer;
 
@@ -13,6 +13,9 @@
 
         renderer = new THREE.WebGLRenderer({ canvas: canvas });
         renderer.setClearColor(0xffffff);
+
+        stlScene.add(stlLights.getFirstLight());
+        stlScene.add(stlLights.getSecondLight());
       }
 
       function render() {
