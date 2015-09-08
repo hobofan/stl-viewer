@@ -1,9 +1,9 @@
 (function () {
   "use strict";
 
-  app.directive('stlCanvas', ['stlRenderer',
+  app.directive('stlCanvas', ['stlRenderer', 'stlMouse',
 
-    function (stlRenderer) {
+    function (stlRenderer, stlMouse) {
 
       return {
         restrict: 'E',
@@ -16,8 +16,9 @@
 
           element.bind('mousedown', function (ev) {
 
+            //stlMouse.down()
             ev.preventDefault();
-          });          
+          });
 
           element.bind('mousemove', function (ev) {
 
