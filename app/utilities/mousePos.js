@@ -5,8 +5,12 @@
 
     function () {
 
-      return {
+      function pos(ev) {
 
+      }
+
+      return {
+        pos: pos
       };
     }
   ]);
