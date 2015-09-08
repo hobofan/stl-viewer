@@ -15,6 +15,10 @@
 
       function move(pt) {
 
+        if (!mousePressed) {
+          return;
+        }
+
         deltaPt = { X:pt.X - lastPt.X, Y:pt.Y - lastPt.Y};
         lastPt = pt;
       }

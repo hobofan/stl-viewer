@@ -1,9 +1,9 @@
 (function () {
   "use strict";
 
-  app.directive('stlCanvas', ['stlRenderer', 'stlMouse',
+  app.directive('stlCanvas', ['stlRenderer', 'stlMouse', 'stlMousePos',
 
-    function (stlRenderer, stlMouse) {
+    function (stlRenderer, stlMouse, stlMousePos) {
 
       return {
         restrict: 'E',
@@ -16,12 +16,12 @@
 
           element.bind('mousedown', function (ev) {
 
-            //stlMouse.down()
+            stlMouse.down(stlMousePos.pos(ev));
             ev.preventDefault();
           });
 
           element.bind('mousemove', function (ev) {
-
+            stlMouse.move(stlMousePos.pos(ev));
           });
         }
       };
