@@ -18,7 +18,7 @@
         stlScene.add(stlLights.getSecondLight());
       }
 
-      function render() {
+      function _render() {
 
         stlCamera.update(canvas.width / canvas.height, stlScene.getBox());
 
@@ -28,12 +28,12 @@
         renderPending = false;
       }
 
-      function requestRender() {
+      function render() {
         if (renderPending) {
           return;
         }
 
-        window.requestAnimationFrame(render);
+        window.requestAnimationFrame(_render);
         renderPending = true;
       }
 
@@ -47,13 +47,13 @@
         stlCamera.resize(canvas.width, canvas.height);
 
         renderer.setViewport(0, 0, canvas.width, canvas.height);
-        requestRender();
+        render();
       }
 
       return {
         init: init,
         resize: resize,
-        requestRender: requestRender
+        render: render
       };
     }
   ]);

@@ -2,8 +2,9 @@
   "use strict";
 
   app.directive('stlCanvas', ['stlRenderer', 'stlMouse', 'stlMousePos',
+    'stlCamera',
 
-    function (stlRenderer, stlMouse, stlMousePos) {
+    function (stlRenderer, stlMouse, stlMousePos, stlCamera) {
 
       return {
         restrict: 'E',
@@ -22,6 +23,11 @@
 
           element.bind('mousemove', function (ev) {
             stlMouse.move(stlMousePos.pos(ev));
+            stlCamera.move();
+
+            if (stlMouse.isMousePressed()) {
+              stlRenderer.render();
+            }
           });
         }
       };
