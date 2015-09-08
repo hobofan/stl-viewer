@@ -11,7 +11,7 @@
 
       angular.element($window).bind('resize', function () {
 
-        renderer.resize();
+        stlRenderer.resize();
       });
 
       angular.element(document).bind('mouseup', function (ev) {
