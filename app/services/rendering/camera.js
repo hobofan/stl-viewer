@@ -76,8 +76,8 @@
         camera.right = (zoom * hAspect - translation.x) * rad;
         camera.top = (zoom * vAspect - translation.y) * rad;
         camera.bottom = (-zoom * vAspect - translation.y) * rad;
-        camera.near = -rad;
-        camera.far = rad;
+        camera.near = -rad*2;
+        camera.far = rad*2;
 
         camera.updateProjectionMatrix();
       }
