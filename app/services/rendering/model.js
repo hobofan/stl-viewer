@@ -23,7 +23,7 @@
             mesh = new THREE.Mesh(geometry, stlMaterials.defaultMaterial);
 
             stlScene.add(mesh);
-            stlRenderer.requestRender();
+            stlRenderer.render();
           }
         });
       }
