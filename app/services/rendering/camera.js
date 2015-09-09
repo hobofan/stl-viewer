@@ -1,9 +1,9 @@
 (function () {
   "use strict";
 
-  app.service('stlCamera', ['stlModes', 'stlMouse',
+  app.service('stlCamera', ['stlModes', 'stlMouse', 'stlLights',
 
-    function (stlModes, stlMouse) {
+    function (stlModes, stlMouse, stlLights) {
 
     	var camera = new THREE.OrthographicCamera(-1, 1, 1, -1, -1, 1);
       var scale = 1.25, height = 1, width = 1;
@@ -20,6 +20,8 @@
 	    function orient(quat) {
 	    	rotation.set(0, 0, 0, 1);
 	      rotation.multiply(quat);
+
+        stlLights.update(rotation);
 	    }
 
 	    function move() {
@@ -40,6 +42,7 @@
       		rotation.multiply(quat().setFromAxisAngle(vec3(0, 1, 0), -delta.X * m));
       		rotation.multiply(quat().setFromAxisAngle(vec3(1, 0, 0), -delta.Y * m));
 
+          stlLights.update(rotation);
 	    	} else if (stlModes.shouldPan()) {
 
           m = scale * zoom / smallerSide;
