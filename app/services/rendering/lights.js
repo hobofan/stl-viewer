@@ -15,7 +15,7 @@
         return light;
       }
 
-      lightPos1 = vec3(0, 0, -1);
+      lightPos1 = vec3(0, 0, 1);
       lightPos2 = vec3(1, 1, 0);
 
       light1 = createLight(0xffffff, lightPos1);
