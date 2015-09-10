@@ -1,12 +1,13 @@
 (function () {
   "use strict";
 
-  app.service('stlSetMode', [
+  app.service('stlSetMode', ['stlModes',
 
-    function () {
+    function (stlModes) {
 
       function set(item) {
-        console.log(item.label);
+
+        stlModes.setMode(item.label.toLowerCase());
       }
 
       return {
