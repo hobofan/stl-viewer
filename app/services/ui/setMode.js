@@ -5,8 +5,8 @@
 
     function () {
 
-      function set(mode) {
-
+      function set(item) {
+        console.log(item.label);
       }
 
       return {

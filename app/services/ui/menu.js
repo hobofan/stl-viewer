@@ -33,11 +33,11 @@
             },
             {
               label: 'Zoom',
-              click: stlFileOpen.set
+              click: stlSetMode.set
             },
             {
               label: 'Rotate',
-              click: stlFileOpen.set
+              click: stlSetMode.set
             }
          ]
         }
