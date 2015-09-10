@@ -1,9 +1,9 @@
 (function () {
   "use strict";
 
-  app.service('stlMenu', ['stlFileOpen',
+  app.service('stlMenu', ['stlFileOpen', 'stlSetMode',
 
-    function (stlFileOpen) {
+    function (stlFileOpen, stlSetMode) {
 
 		  function create() {
 
@@ -28,8 +28,16 @@
           label: 'View',
           submenu: [
             {
-              label: 'Reset',
-              click: stlFileOpen.open
+              label: 'Pan',
+              click: stlSetMode.set
+            },
+            {
+              label: 'Zoom',
+              click: stlFileOpen.set
+            },
+            {
+              label: 'Rotate',
+              click: stlFileOpen.set
             }
          ]
         }

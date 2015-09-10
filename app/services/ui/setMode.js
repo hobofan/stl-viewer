@@ -5,8 +5,12 @@
 
     function () {
 
-      return {
+      function set(mode) {
 
+      }
+
+      return {
+        set: set
       };
     }
   ]);

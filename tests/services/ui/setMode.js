@@ -3,10 +3,10 @@ describe('StlSetMode', function () {
 
   beforeEach(module('stlApp'));
 
-  it('should have functions to set the different modes', inject(
+  it('should have a function to set the mode', inject(
 
     function (stlSetMode) {
-    //expect(angular.isFunction(stlFileOpen.open)).toBe(true);
+      expect(angular.isFunction(stlSetMode.set)).toBe(true);
   }));
 });
 
