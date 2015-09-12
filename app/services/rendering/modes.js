@@ -11,7 +11,14 @@
         ZOOM: 'zoom'
       };
 
+      var priorities = {
+        HIGH: 3,
+        MEDIUM: 2,
+        LOW: 1
+      };
+
       var mode = modes.ROTATE;
+      var priority = priorities.LOW;
 
       function isValid(m) {
         if (m === modes.ROTATE || m === modes.PAN ||
@@ -22,7 +29,13 @@
         return false;
       }
 
-      function setMode(m) {
+      function setMode(m, p) {
+
+        p = p || priorities.LOW;
+
+        if (p < priority) {
+          return;
+        }
 
         if (isValid(m)) {
           mode = m;
@@ -47,6 +60,7 @@
 
       return {
         modes: modes,
+        priorities: priorities,
         getMode: getMode,
         setMode: setMode,
         shouldRotate: shouldRotate,
