@@ -46,7 +46,7 @@
 
 	    	} else if (stlModes.shouldPan()) {
 
-          m = scale * 1.6 * zoom / smallerSide;
+          m = 2 * zoom / smallerSide;
           translation.add(vec2(delta.X, -delta.Y).multiplyScalar(m));
 
 	    	} else if (stlModes.shouldZoom()) {
@@ -56,7 +56,7 @@
           zoom *= delta.Y < 0 ? 0.9 : 1.1;
           zoom = zoom.clamp(0.05, 20);
 
-          m = scale * 1.6 * (lastZoom - zoom) / smallerSide;
+          m = 2 * (lastZoom - zoom) / smallerSide;
           translation.add(vec2(width/2 - downPt.X, downPt.Y - height/2).multiplyScalar(m));
 	    	}
 	    }
