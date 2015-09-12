@@ -1,13 +1,33 @@
 (function () {
   "use strict";
 
-  app.service('stlMouse', ['stlMousePos',
+  app.service('stlMouse', ['stlMousePos', 'stlModes',
 
-    function (stlMousePos) {
+    function (stlMousePos, stlModes) {
 
       var lastPt, downPt, deltaPt, mousePressed = false;
 
+      function setMode(ev) {
+
+        var button = ev.button;
+        switch (button) {
+          case 0:
+            stlModes.setMode(stlModes.modes.ROTATE);
+            break;
+          case 1:
+            stlModes.setMode(stlModes.modes.PAN);
+            break;
+          case 2:
+            stlModes.setMode(stlModes.modes.ZOOM);
+            break;
+          default:
+            stlModes.setMode(stlModes.modes.ROTATE);
+        }
+      }
+
       function down(ev) {
+
+        setMode(ev);
 
         var pt = stlMousePos.pos(ev);
 
