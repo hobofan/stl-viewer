@@ -39,6 +39,7 @@
 
         if (isValid(m)) {
           mode = m;
+          priority = p;
         }
       }
 
