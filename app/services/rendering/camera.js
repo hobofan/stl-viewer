@@ -43,9 +43,10 @@
       		rotation.multiply(quat().setFromAxisAngle(vec3(1, 0, 0), -delta.Y * m));
 
           stlLights.update(rotation);
+
 	    	} else if (stlModes.shouldPan()) {
 
-          m = scale * zoom / smallerSide;
+          m = scale * 1.6 * zoom / smallerSide;
           translation.add(vec2(delta.X, -delta.Y).multiplyScalar(m));
 
 	    	} else if (stlModes.shouldZoom()) {
@@ -55,7 +56,7 @@
           zoom *= delta.Y < 0 ? 0.9 : 1.1;
           zoom = zoom.clamp(0.05, 20);
 
-          m = scale * (lastZoom - zoom) / smallerSide;
+          m = scale * 1.6 * (lastZoom - zoom) / smallerSide;
           translation.add(vec2(width/2 - downPt.X, downPt.Y - height/2).multiplyScalar(m));
 	    	}
 	    }
@@ -75,10 +76,10 @@
         var hAspect = (aspect > 1) ? aspect: 1;
         var vAspect = (aspect < 1) ? 1/aspect: 1;
 
-        camera.left = (-zoom * hAspect - translation.x) * rad;
-        camera.right = (zoom * hAspect - translation.x) * rad;
-        camera.top = (zoom * vAspect - translation.y) * rad;
-        camera.bottom = (-zoom * vAspect - translation.y) * rad;
+        camera.left = (-zoom * hAspect - translation.x) * scale * rad;
+        camera.right = (zoom * hAspect - translation.x) * scale * rad;
+        camera.top = (zoom * vAspect - translation.y) * scale * rad;
+        camera.bottom = (-zoom * vAspect - translation.y) * scale * rad;
         camera.near = -rad*2;
         camera.far = rad*2;
 
