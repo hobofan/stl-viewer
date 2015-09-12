@@ -17,12 +17,12 @@
 
           element.bind('mousedown', function (ev) {
 
-            stlMouse.down(stlMousePos.pos(ev));
+            stlMouse.down(ev);
             ev.preventDefault();
           });
 
           element.bind('mousemove', function (ev) {
-            stlMouse.move(stlMousePos.pos(ev));
+            stlMouse.move(ev);
             stlCamera.move();
 
             if (stlMouse.isMousePressed()) {

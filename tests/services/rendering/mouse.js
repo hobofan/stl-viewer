@@ -42,10 +42,10 @@ describe('StlMouse', function () {
     function is called',
     inject(function (stlMouse) {
 
-    var pt = { X: 1, Y: 2};
-    stlMouse.down(pt);
+    var ev = { layerX: 1, layerY: 2};
+    stlMouse.down(ev);
 
-    expect(stlMouse.downPoint()).toEqual(pt);
+    expect(stlMouse.downPoint()).toEqual({ X: 1, Y: 2});
   }));
 
   it('should have a function to get the delta movement when the mouse is moved',
@@ -57,11 +57,11 @@ describe('StlMouse', function () {
   it('should return the correct return the delta movement',
     inject(function (stlMouse) {
 
-    var downPt = { X: 1, Y: 2};
-    var movePt = { X: 3, Y: 5};
+    var downEv = { layerX: 1, layerY: 2};
+    var moveEv = { layerX: 3, layerY: 5};
 
-    stlMouse.down(downPt);
-    stlMouse.move(movePt);
+    stlMouse.down(downEv);
+    stlMouse.move(moveEv);
 
     var deltaPt = stlMouse.delta();
     expect(deltaPt).toEqual({ X: 2, Y: 3});

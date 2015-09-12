@@ -1,29 +1,33 @@
 (function () {
   "use strict";
 
-  app.service('stlMouse', [
+  app.service('stlMouse', ['stlMousePos',
 
-    function () {
+    function (stlMousePos) {
 
       var lastPt, downPt, deltaPt, mousePressed = false;
 
-      function down(pt) {
+      function down(ev) {
+
+        var pt = stlMousePos.pos(ev);
 
         mousePressed = true;
         lastPt = downPt = pt;
       }
 
-      function move(pt) {
+      function move(ev) {
 
         if (!mousePressed) {
           return;
         }
 
+        var pt = stlMousePos.pos(ev);
+
         deltaPt = { X:pt.X - lastPt.X, Y:pt.Y - lastPt.Y};
         lastPt = pt;
       }
 
-      function up(pt) {
+      function up() {
         mousePressed = false;
       }
 
