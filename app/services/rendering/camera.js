@@ -83,8 +83,8 @@
         camera.right = (zoom * hAspect - translation.x) * scale * rad;
         camera.top = (zoom * vAspect - translation.y) * scale * rad;
         camera.bottom = (-zoom * vAspect - translation.y) * scale * rad;
-        camera.near = /*center.z*/ - rad*2;
-        camera.far = /*center.z*/ + rad*2;
+        camera.near = 0;
+        camera.far = 2 * rad;
 
         camera.updateProjectionMatrix();
       }
