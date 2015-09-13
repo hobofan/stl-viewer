@@ -69,9 +69,12 @@
         var eye = vec3(0, 0, rad);
         var up = vec3(0, 1, 0);
 
-        camera.position.copy(eye.applyQuaternion(rotation).add(center));
+        center.addVectors(bbox.min, bbox.max).divideScalar(2);
+        eye.applyQuaternion(rotation).add(center);
+
+        camera.position.copy(eye);
         camera.up = up.applyQuaternion(rotation);
-        camera.lookAt(center.addVectors(bbox.min, bbox.max).divideScalar(2));
+        camera.lookAt(center);
 
         var hAspect = (aspect > 1) ? aspect: 1;
         var vAspect = (aspect < 1) ? 1/aspect: 1;
@@ -80,8 +83,8 @@
         camera.right = (zoom * hAspect - translation.x) * scale * rad;
         camera.top = (zoom * vAspect - translation.y) * scale * rad;
         camera.bottom = (-zoom * vAspect - translation.y) * scale * rad;
-        camera.near = -rad*2;
-        camera.far = rad*2;
+        camera.near = /*center.z*/ - rad*2;
+        camera.far = /*center.z*/ + rad*2;
 
         camera.updateProjectionMatrix();
       }
