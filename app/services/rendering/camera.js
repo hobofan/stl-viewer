@@ -37,7 +37,7 @@
 
 	    	if (stlModes.shouldRotate()) {
 
-          m = (Math.PI / 180.0) * 0.3 / (window.devicePixelRatio || 1);
+          m = (Math.PI / 180.0) * 0.3;
 
       		rotation.multiply(quat().setFromAxisAngle(vec3(0, 1, 0), -delta.X * m));
       		rotation.multiply(quat().setFromAxisAngle(vec3(1, 0, 0), -delta.Y * m));
