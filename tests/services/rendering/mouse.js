@@ -3,6 +3,8 @@ describe('StlMouse', function () {
 
   beforeEach(module('stlApp'));
 
+  var pixelRatio = window.devicePixelRatio || 1;
+
   it('should have all mouse handling functions', inject(function (stlMouse) {
     expect(angular.isFunction(stlMouse.down)).toBe(true);
     expect(angular.isFunction(stlMouse.up)).toBe(true);
@@ -45,7 +47,8 @@ describe('StlMouse', function () {
     var ev = { layerX: 1, layerY: 2};
     stlMouse.down(ev);
 
-    expect(stlMouse.downPoint()).toEqual({ X: 1, Y: 2});
+    expect(stlMouse.downPoint()).toEqual({ X: 1 * pixelRatio,
+      Y: 2 * pixelRatio});
   }));
 
   it('should have a function to get the delta movement when the mouse is moved',
@@ -64,6 +67,6 @@ describe('StlMouse', function () {
     stlMouse.move(moveEv);
 
     var deltaPt = stlMouse.delta();
-    expect(deltaPt).toEqual({ X: 2, Y: 3});
+    expect(deltaPt).toEqual({ X: 2 * pixelRatio, Y: 3 * pixelRatio});
   }));
 });
