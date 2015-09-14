@@ -6,7 +6,7 @@
     function (stlModes, stlMouse, stlLights) {
 
     	var camera = new THREE.OrthographicCamera(-1, 1, 1, -1, -1, 1);
-      var scale = 1.25, height = 1, width = 1;
+      var scale = 1.05, height = 1, width = 1;
 
       var rotation = quat();
       var translation = vec2();

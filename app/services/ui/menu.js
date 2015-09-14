@@ -29,15 +29,21 @@
           submenu: [
             {
               label: 'Pan',
-              click: stlSetMode.set
+              click: stlSetMode.set,
+              type: 'radio',
+              checked: false
             },
             {
               label: 'Zoom',
-              click: stlSetMode.set
+              click: stlSetMode.set,
+              type: 'radio',
+              checked: false
             },
             {
               label: 'Rotate',
-              click: stlSetMode.set
+              click: stlSetMode.set,
+              type: 'radio',
+              checked: true
             }
          ]
         }
