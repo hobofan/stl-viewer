@@ -2,8 +2,9 @@
   "use strict";
 
   app.service('stlModel', ['stlMaterials', 'stlScene', 'stlRenderer',
+    'stlCamera', 'stlOrient',
 
-    function (stlMaterials, stlScene, stlRenderer) {
+    function (stlMaterials, stlScene, stlRenderer, stlCamera, stlOrient) {
 
       var mesh;
 
@@ -23,6 +24,7 @@
             mesh = new THREE.Mesh(geometry, stlMaterials.defaultMaterial);
 
             stlScene.add(mesh);
+            stlCamera.orient(stlOrient.orient(stlOrient.orientations.ISOMETRIC));
             stlRenderer.render();
           }
         });

@@ -19,7 +19,7 @@
 
         var rot = new THREE.Quaternion();
         rot.multiply(quatFromAxisAngle(vec3(0, 0, 1), o.yaw));
-        rot.multiply(quatFromAxisAngle(vec3(-1, 0, 0), o.roll));
+        rot.multiply(quatFromAxisAngle(vec3(1, 0, 0), o.roll));
         return rot;
       }
 
