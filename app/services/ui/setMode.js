@@ -7,8 +7,7 @@
 
       function set(item) {
 
-        stlModes.setMode(item.label.toLowerCase(),
-          stlModes.priorities.MEDIUM);
+        stlModes.setMode(item.label.toLowerCase());
       }
 
       return {

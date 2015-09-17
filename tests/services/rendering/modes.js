@@ -70,29 +70,4 @@ describe('StlModes', function () {
       expect(stlModes.shouldZoom()).toBe(false);
     }
   ));
-
-  it('should have a priorities property with the various priorities defined', inject(
-    function (stlModes) {
-      expect(stlModes.priorities).toBeDefined();
-      expect(stlModes.priorities.HIGH).toBeDefined();
-      expect(stlModes.priorities.MEDIUM).toBeDefined();
-      expect(stlModes.priorities.LOW).toBeDefined();
-    }
-  ));
-
-  it('should have proper priority orders', inject(
-    function (stlModes) {
-      expect(stlModes.priorities.HIGH).toBeGreaterThan(stlModes.priorities.MEDIUM);
-      expect(stlModes.priorities.MEDIUM).toBeGreaterThan(stlModes.priorities.LOW);
-    }
-  ));
-
-  it('should not allow setting of a low priority mode', inject(
-    function (stlModes) {
-
-      stlModes.setMode(stlModes.modes.PAN, stlModes.priorities.HIGH);
-      stlModes.setMode(stlModes.modes.ZOOM, stlModes.priorities.LOW);
-      expect(stlModes.getMode()).toEqual(stlModes.modes.PAN);
-    }
-  ));
 });

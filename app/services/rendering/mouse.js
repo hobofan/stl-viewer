@@ -10,20 +10,17 @@
       function setMode(ev) {
 
         var button = ev.button;
-        var priority = stlModes.priorities.LOW;
 
         switch (button) {
           case 0:
-            stlModes.setMode(stlModes.modes.ROTATE, priority);
+            stlModes.setMode(stlModes.modes.ROTATE);
             break;
           case 1:
-            stlModes.setMode(stlModes.modes.PAN, priority);
+            stlModes.setMode(stlModes.modes.PAN);
             break;
           case 2:
-            stlModes.setMode(stlModes.modes.ZOOM, priority);
+            stlModes.setMode(stlModes.modes.ZOOM);
             break;
-          default:
-            stlModes.setMode(stlModes.modes.ROTATE, priority);
         }
       }
 
