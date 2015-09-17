@@ -13,3 +13,12 @@ function quat(x, y, z, w) {
   "use strict";
   return new THREE.Quaternion(x, y, z, w);
 }
+
+function quatFromAxisAngle(axis, angle) {
+  "use strict";
+
+  var q = new THREE.Quaternion();
+  q.setFromAxisAngle(axis, angle);
+
+  return q;
+}
