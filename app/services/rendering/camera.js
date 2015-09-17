@@ -25,7 +25,7 @@
 	    }
 
 	    function move() {
-	    	if (!stlMouse.isMousePressed()) {
+	    	if (!stlMouse.isMousePressed() && !stlMouse.hasMouseWheeled()) {
 	    		return;
 	    	}
 
@@ -49,7 +49,7 @@
           m = 2 * zoom / smallerSide;
           translation.add(vec2(delta.X, -delta.Y).multiplyScalar(m));
 
-	    	} else if (stlModes.shouldZoom()) {
+	    	} else if (stlModes.shouldZoom() || stlMouse.hasMouseWheeled()) {
 
           var lastZoom = zoom;
 

@@ -1,4 +1,5 @@
 
+// jshint multistr:true
 describe('StlMouse', function () {
 
   beforeEach(module('stlApp'));
@@ -11,10 +12,12 @@ describe('StlMouse', function () {
     expect(angular.isFunction(stlMouse.move)).toBe(true);
   }));
 
-  it('should have a function to check if the mouse is pressed',
+  it('should have a function to check if the mouse is pressed or has been \
+    wheeled',
     inject(function (stlMouse) {
 
     expect(angular.isFunction(stlMouse.isMousePressed)).toBe(true);
+    expect(angular.isFunction(stlMouse.hasMouseWheeled)).toBe(true);
   }));
 
   it('should return false when isMousePressed is called initially',
@@ -32,7 +35,6 @@ describe('StlMouse', function () {
     expect(stlMouse.isMousePressed()).toBe(false);
   }));
 
-  // jshint multistr:true
   it('should have a function to get the point where the mouse was initially \
     clicked/down',
     inject(function (stlMouse) {

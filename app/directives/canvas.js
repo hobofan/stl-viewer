@@ -29,6 +29,13 @@
               stlRenderer.render();
             }
           });
+
+          element.bind('mousewheel', function (ev) {
+            stlMouse.wheel(ev);
+            stlCamera.move();
+
+            stlRenderer.render();
+          });
         }
       };
     }

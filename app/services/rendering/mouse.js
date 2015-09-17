@@ -5,7 +5,8 @@
 
     function (stlMousePos, stlModes) {
 
-      var lastPt, downPt, deltaPt, mousePressed = false;
+      var lastPt, downPt, deltaPt, mousePressed = false,
+        mouseWheeled = false;
 
       function setMode(ev) {
 
@@ -16,10 +17,10 @@
             stlModes.setMode(stlModes.modes.ROTATE);
             break;
           case 1:
-            stlModes.setMode(stlModes.modes.PAN);
+            stlModes.setMode(stlModes.modes.ZOOM);
             break;
           case 2:
-            stlModes.setMode(stlModes.modes.ZOOM);
+            stlModes.setMode(stlModes.modes.PAN);
             break;
         }
       }
@@ -36,6 +37,7 @@
 
       function move(ev) {
 
+        mouseWheeled = false;
         if (!mousePressed) {
           return;
         }
@@ -46,12 +48,27 @@
         lastPt = pt;
       }
 
-      function up() {
+      function up(ev) {
+
+        stlModes.setMode(stlModes.modes.DO_NOTHING);
         mousePressed = false;
+      }
+
+      function wheel(ev) {
+
+        var pt = stlMousePos.pos(ev);
+        lastPt = downPt = pt;
+
+        mouseWheeled = true;
+        deltaPt = {X: 0, Y: ev.wheelDeltaY};
       }
 
       function isMousePressed() {
         return mousePressed;
+      }
+
+      function hasMouseWheeled() {
+        return mouseWheeled;
       }
 
       function downPoint() {
@@ -66,9 +83,11 @@
         down: down,
         move: move,
         up: up,
+        wheel: wheel,
         isMousePressed: isMousePressed,
         downPoint: downPoint,
-        delta: delta
+        delta: delta,
+        hasMouseWheeled: hasMouseWheeled
       };
     }
   ]);
