@@ -1,9 +1,9 @@
 (function () {
   "use strict";
 
-  app.service('stlMenu', ['stlFileOpen', 'stlSetMode',
+  app.service('stlMenu', ['stlFileOpen', 'stlViewMenu',
 
-    function (stlFileOpen, stlSetMode) {
+    function (stlFileOpen, stlViewMenu) {
 
 		  function create() {
 
@@ -24,54 +24,7 @@
 		          }
 		       ]
 		     },
-        {
-          label: 'View',
-          submenu: [
-            {
-              label: 'Mode',
-              submenu: [
-                {
-                  label: 'Pan',
-                  click: stlSetMode.set
-                },
-                {
-                  label: 'Zoom',
-                  click: stlSetMode.set
-                },
-                {
-                  label: 'Rotate',
-                  click: stlSetMode.set
-                }
-              ]
-            },
-            {
-              label: 'Orient',
-              submenu: [
-                {
-                  label: 'Top'
-                },
-                {
-                  label: 'Bottom'
-                },
-                {
-                  label: 'Left'
-                },
-                {
-                  label: 'Right'
-                },
-                {
-                  label: 'Front'
-                },
-                {
-                  label: 'Back'
-                },
-                {
-                  label: 'Isometric'
-                }
-              ]
-            }
-         ]
-        }
+         stlViewMenu.menu
 		   ];
 
 		    var m = menu.buildFromTemplate(template);
