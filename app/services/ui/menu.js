@@ -28,22 +28,47 @@
           label: 'View',
           submenu: [
             {
-              label: 'Pan',
-              click: stlSetMode.set,
-              type: 'radio',
-              checked: false
+              label: 'Mode',
+              submenu: [
+                {
+                  label: 'Pan',
+                  click: stlSetMode.set
+                },
+                {
+                  label: 'Zoom',
+                  click: stlSetMode.set
+                },
+                {
+                  label: 'Rotate',
+                  click: stlSetMode.set
+                }
+              ]
             },
             {
-              label: 'Zoom',
-              click: stlSetMode.set,
-              type: 'radio',
-              checked: false
-            },
-            {
-              label: 'Rotate',
-              click: stlSetMode.set,
-              type: 'radio',
-              checked: true
+              label: 'Orient',
+              submenu: [
+                {
+                  label: 'Top'
+                },
+                {
+                  label: 'Bottom'
+                },
+                {
+                  label: 'Left'
+                },
+                {
+                  label: 'Right'
+                },
+                {
+                  label: 'Front'
+                },
+                {
+                  label: 'Back'
+                },
+                {
+                  label: 'Isometric'
+                }
+              ]
             }
          ]
         }
