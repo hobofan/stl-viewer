@@ -1,9 +1,9 @@
 (function () {
   "use strict";
 
-  app.service('stlViewMenu', ['stlSetMode',
+  app.service('stlViewMenu', ['stlSetMode', 'stlSetOrientation',
 
-    function (stlSetMode) {
+    function (stlSetMode, stlSetOrientation) {
 
       var menu =
         {
@@ -30,25 +30,32 @@
               label: 'Orient',
               submenu: [
                 {
-                  label: 'Top'
+                  label: 'Top',
+                  click: stlSetOrientation.set
                 },
                 {
-                  label: 'Bottom'
+                  label: 'Bottom',
+                  click: stlSetOrientation.set
                 },
                 {
-                  label: 'Left'
+                  label: 'Left',
+                  click: stlSetOrientation.set
                 },
                 {
-                  label: 'Right'
+                  label: 'Right',
+                  click: stlSetOrientation.set
                 },
                 {
-                  label: 'Front'
+                  label: 'Front',
+                  click: stlSetOrientation.set
                 },
                 {
-                  label: 'Back'
+                  label: 'Back',
+                  click: stlSetOrientation.set
                 },
                 {
-                  label: 'Isometric'
+                  label: 'Isometric',
+                  click: stlSetOrientation.set
                 }
               ]
             }
