@@ -3,6 +3,11 @@
   padding: 0;
 }
 
+body {
+  font-family: Arial, sans-serif;
+  font-size: 12px;
+}
+
 canvas#mainCanvas {
   position: absolute;
   width: 100%;
@@ -14,6 +19,21 @@ canvas#mainCanvas {
   position: absolute;
   bottom: 0;
   left: 0;
-  height: 24px;
+  height: 18px;
   width: 100%;
+}
+
+.statusItem {
+  padding-left: 6px;
+}
+
+.statusLabel {
+  text-transform: uppercase;
+  color: #333;
+}
+
+.statusValue {
+  text-transform: lowercase;
+  font-size: 10px;
+  color: #777;
 }
