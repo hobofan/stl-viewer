@@ -9,3 +9,11 @@ canvas#mainCanvas {
   height: 100%;
   min-height: 100%;
 }
+
+#statusBar {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 24px;
+  width: 100%;
+}
