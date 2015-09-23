@@ -10,7 +10,7 @@
           label: 'View',
           submenu: [
             {
-              label: 'Mode',
+              label: 'Move',
               submenu: [
                 {
                   label: 'Pan',
@@ -22,6 +22,19 @@
                 },
                 {
                   label: 'Rotate',
+                  click: stlSetMode.set
+                }
+              ]
+            },
+            {
+              label: 'Render',
+              submenu: [
+                {
+                  label: 'Shaded',
+                  click: stlSetMode.set
+                },
+                {
+                  label: 'Lines',
                   click: stlSetMode.set
                 }
               ]
