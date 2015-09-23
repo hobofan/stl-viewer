@@ -19,6 +19,7 @@
 
             stlMouse.down(ev);
             ev.preventDefault();
+            scope.$apply();
           });
 
           element.bind('mousemove', function (ev) {
@@ -27,6 +28,7 @@
 
             if (stlMouse.isMousePressed()) {
               stlRenderer.render();
+              scope.$apply();
             }
           });
 
@@ -35,6 +37,7 @@
             stlCamera.move();
 
             stlRenderer.render();
+            scope.$apply();
           });
         }
       };

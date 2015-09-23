@@ -17,6 +17,7 @@
       angular.element(document).bind('mouseup', function (ev) {
 
         stlMouse.up(ev);
+        $scope.$apply();
       });
     }
   ]);
