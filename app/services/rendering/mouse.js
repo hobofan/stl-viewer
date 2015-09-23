@@ -56,6 +56,7 @@
 
       function wheel(ev) {
 
+        stlModes.setMode(stlModes.modes.ZOOM);
         var pt = stlMousePos.pos(ev);
         lastPt = downPt = pt;
 
