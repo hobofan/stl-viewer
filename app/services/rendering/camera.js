@@ -49,7 +49,7 @@
           m = 2 * zoom / smallerSide;
           translation.add(vec2(delta.X, -delta.Y).multiplyScalar(m));
 
-	    	} else if (stlModes.shouldZoom() || stlMouse.hasMouseWheeled()) {
+	    	} else if (stlModes.shouldZoom()) {
 
           var lastZoom = zoom;
 
