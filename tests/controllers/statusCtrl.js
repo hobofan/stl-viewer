@@ -3,10 +3,9 @@ describe('StatusCtrl', function () {
 
   beforeEach(module('stlApp'));
 
-  it('should do something', inject(function ($controller) {
+  it('should have a function to get the mode', inject(function ($controller) {
 
     var scope = {}, ctrl = $controller('StatusCtrl', {$scope:scope});
-
-    //expect(scope.str).toBeDefined();
+    expect(angular.isFunction(scope.getMode)).toBe(true);
   }));
 });

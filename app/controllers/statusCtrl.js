@@ -1,7 +1,13 @@
 (function () {
   "use strict";
 
-  app.controller('StatusCtrl', function($scope) {
-    $scope.str = "some test string";
-  });
+  app.controller('StatusCtrl', ['$scope', 'stlModes',
+
+    function($scope, stlModes) {
+
+      $scope.getMode = function () {
+        return stlModes.getMode();
+      };
+    }
+  ]);
 }());
