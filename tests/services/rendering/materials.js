@@ -7,6 +7,7 @@ describe('StlMaterials', function () {
     inject(function (stlMaterials) {
 
     expect(stlMaterials.defaultMaterial).toBeDefined();
+    expect(stlMaterials.defaultLineMaterial).toBeDefined();
   }));
 
   it('should have materials of the correct types',
@@ -14,5 +15,7 @@ describe('StlMaterials', function () {
 
     expect(stlMaterials.defaultMaterial instanceof
       THREE.MeshLambertMaterial).toBe(true);
+    expect(stlMaterials.defaultLineMaterial instanceof
+      THREE.LineBasicMaterial).toBe(true);
   }));
 });

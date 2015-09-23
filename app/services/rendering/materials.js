@@ -10,12 +10,18 @@
               side: THREE.DoubleSide
             });
 
+      var defaultLineMaterial = new THREE.LineBasicMaterial({
+              color: 0x333333,
+              linewidth: 1
+            });
+
       defaultMaterial.polygonOffset = true;
       defaultMaterial.polygonOffsetFactor = 1.0;
       defaultMaterial.polygonOffsetUnits = 1.0;
 
       return {
-        defaultMaterial: defaultMaterial
+        defaultMaterial: defaultMaterial,
+        defaultLineMaterial: defaultLineMaterial
       };
     }
   ]);
