@@ -7,7 +7,7 @@
 
       function set(item) {
 
-        stlModes.setMode(item.label.toLowerCase());
+        stlModes.setMenuMode(item.label.toLowerCase());
         $rootScope.$apply();
       }
 

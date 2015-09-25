@@ -12,6 +12,7 @@
       };
 
       var mode = modes.ROTATE;
+      var menuMode = modes.ROTATE;
 
       function isValid(m) {
         if (m === modes.ROTATE || m === modes.PAN ||
@@ -22,9 +23,21 @@
         return false;
       }
 
-      function setMode(m) {
+      function setMode(m, force) {
 
         if (isValid(m)) {
+          if (menuMode === m || force === true) {
+            mode = m;
+          } else {
+            mode = menuMode;
+          }
+        }
+      }
+
+      function setMenuMode(m) {
+
+        if (isValid(m)) {
+          menuMode = m;
           mode = m;
         }
       }
@@ -49,6 +62,7 @@
         modes: modes,
         getMode: getMode,
         setMode: setMode,
+        setMenuMode: setMenuMode,
         shouldRotate: shouldRotate,
         shouldPan: shouldPan,
         shouldZoom: shouldZoom

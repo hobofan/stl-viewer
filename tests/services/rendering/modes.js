@@ -7,6 +7,7 @@ describe('StlModes', function () {
     function (stlModes) {
       expect(angular.isFunction(stlModes.getMode)).toBe(true);
       expect(angular.isFunction(stlModes.setMode)).toBe(true);
+      expect(angular.isFunction(stlModes.setMenuMode)).toBe(true);
     }
   ));
 
@@ -54,17 +55,17 @@ describe('StlModes', function () {
   it('should currectly identify the current mode with the helper functions', inject(
     function (stlModes) {
 
-      stlModes.setMode(stlModes.modes.PAN);
+      stlModes.setMode(stlModes.modes.PAN, true);
       expect(stlModes.shouldPan()).toBe(true);
       expect(stlModes.shouldRotate()).toBe(false);
       expect(stlModes.shouldZoom()).toBe(false);
 
-      stlModes.setMode(stlModes.modes.ZOOM);
+      stlModes.setMode(stlModes.modes.ZOOM, true);
       expect(stlModes.shouldPan()).toBe(false);
       expect(stlModes.shouldRotate()).toBe(false);
       expect(stlModes.shouldZoom()).toBe(true);
 
-      stlModes.setMode(stlModes.modes.ROTATE);
+      stlModes.setMode(stlModes.modes.ROTATE, true);
       expect(stlModes.shouldPan()).toBe(false);
       expect(stlModes.shouldRotate()).toBe(true);
       expect(stlModes.shouldZoom()).toBe(false);

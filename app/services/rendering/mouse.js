@@ -17,10 +17,10 @@
             stlModes.setMode(stlModes.modes.ROTATE);
             break;
           case 1:
-            stlModes.setMode(stlModes.modes.ZOOM);
+            stlModes.setMode(stlModes.modes.ZOOM, true);
             break;
           case 2:
-            stlModes.setMode(stlModes.modes.PAN);
+            stlModes.setMode(stlModes.modes.PAN, true);
             break;
         }
       }
@@ -55,7 +55,7 @@
 
       function wheel(ev) {
 
-        stlModes.setMode(stlModes.modes.ZOOM);
+        stlModes.setMode(stlModes.modes.ZOOM, true);
         var pt = stlMousePos.pos(ev);
         lastPt = downPt = pt;
 
