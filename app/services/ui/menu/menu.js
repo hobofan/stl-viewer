@@ -20,7 +20,8 @@
 		        submenu: [
 		          {
 		            label: 'Open',
-		            click: stlFileOpen.open
+		            click: stlFileOpen.open,
+                accelerator: 'CmdOrCtrl+O'
 		          }
 		       ]
 		     },

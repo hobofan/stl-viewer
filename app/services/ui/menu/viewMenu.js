@@ -14,15 +14,18 @@
               submenu: [
                 {
                   label: 'Pan',
-                  click: stlSetMode.set
+                  click: stlSetMode.set,
+                  accelerator: 'CmdOrCtrl+P'
                 },
                 {
                   label: 'Zoom',
-                  click: stlSetMode.set
+                  click: stlSetMode.set,
+                  accelerator: 'CmdOrCtrl+Z'
                 },
                 {
                   label: 'Rotate',
-                  click: stlSetMode.set
+                  click: stlSetMode.set,
+                  accelerator: 'CmdOrCtrl+R'
                 }
               ]
             },
