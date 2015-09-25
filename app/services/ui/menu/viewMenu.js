@@ -47,31 +47,38 @@
               submenu: [
                 {
                   label: 'Top',
-                  click: stlSetOrientation.set
+                  click: stlSetOrientation.set,
+                  accelerator: 'Ctrl+Shift+T'
                 },
                 {
                   label: 'Bottom',
-                  click: stlSetOrientation.set
+                  click: stlSetOrientation.set,
+                  accelerator: 'Ctrl+Shift+M'
                 },
                 {
                   label: 'Left',
-                  click: stlSetOrientation.set
+                  click: stlSetOrientation.set,
+                  accelerator: 'Ctrl+Shift+L'
                 },
                 {
                   label: 'Right',
-                  click: stlSetOrientation.set
+                  click: stlSetOrientation.set,
+                  accelerator: 'Ctrl+Shift+R'
                 },
                 {
                   label: 'Front',
-                  click: stlSetOrientation.set
+                  click: stlSetOrientation.set,
+                  accelerator: 'Ctrl+Shift+F'
                 },
                 {
                   label: 'Back',
-                  click: stlSetOrientation.set
+                  click: stlSetOrientation.set,
+                  accelerator: 'Ctrl+Shift+B'
                 },
                 {
                   label: 'Isometric',
-                  click: stlSetOrientation.set
+                  click: stlSetOrientation.set,
+                  accelerator: 'Ctrl+Shift+I'
                 }
               ]
             }
