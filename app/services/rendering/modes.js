@@ -8,15 +8,14 @@
       var modes = {
         ROTATE: 'rotate',
         PAN: 'pan',
-        ZOOM: 'zoom',
-        DO_NOTHING: 'do nothing'
+        ZOOM: 'zoom'
       };
 
       var mode = modes.ROTATE;
 
       function isValid(m) {
         if (m === modes.ROTATE || m === modes.PAN ||
-          m === modes.ZOOM || m === modes.DO_NOTHING) {
+          m === modes.ZOOM) {
           return true;
         }
 

@@ -50,7 +50,6 @@
 
       function up(ev) {
 
-        stlModes.setMode(stlModes.modes.DO_NOTHING);
         mousePressed = false;
       }
 
