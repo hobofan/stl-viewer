@@ -14,7 +14,7 @@ describe('StlModes', function () {
   it('should return the mode that was set earlier', inject(
     function (stlModes) {
 
-      stlModes.setMode(stlModes.modes.PAN);
+      stlModes.setMode(stlModes.modes.PAN, true);
       expect(stlModes.getMode()).toEqual(stlModes.modes.PAN);
     }
   ));
@@ -38,7 +38,7 @@ describe('StlModes', function () {
   it('should not allow setting of an unsupported mode', inject(
     function (stlModes) {
 
-      stlModes.setMode(stlModes.modes.PAN);
+      stlModes.setMode(stlModes.modes.PAN, true);
       stlModes.setMode("invalid");
       expect(stlModes.getMode()).toEqual(stlModes.modes.PAN);
     }
@@ -69,6 +69,30 @@ describe('StlModes', function () {
       expect(stlModes.shouldPan()).toBe(false);
       expect(stlModes.shouldRotate()).toBe(true);
       expect(stlModes.shouldZoom()).toBe(false);
+    }
+  ));
+
+  it('should not set mode other than rotate unless forced', inject(
+    function (stlModes) {
+
+      stlModes.setMode(stlModes.modes.PAN);
+      expect(stlModes.getMode()).toEqual(stlModes.modes.ROTATE);
+
+      stlModes.setMode(stlModes.modes.ZOOM);
+      expect(stlModes.getMode()).toEqual(stlModes.modes.ROTATE);
+    }
+  ));
+
+  it('should not set mode other than the menu mode unless forced', inject(
+    function (stlModes) {
+
+      stlModes.setMenuMode(stlModes.modes.PAN);
+
+      stlModes.setMode(stlModes.modes.ROTATE);
+      expect(stlModes.getMode()).toEqual(stlModes.modes.PAN);
+
+      stlModes.setMode(stlModes.modes.ZOOM);
+      expect(stlModes.getMode()).toEqual(stlModes.modes.PAN);
     }
   ));
 });
