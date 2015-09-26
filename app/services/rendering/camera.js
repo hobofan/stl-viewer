@@ -6,7 +6,7 @@
     function (stlModes, stlMouse, stlLights) {
 
     	var camera = new THREE.OrthographicCamera(-1, 1, 1, -1, -1, 1);
-      var scale = 1.05, height = 1, width = 1;
+      var height = 1, width = 1;
 
       var rotation = quat();
       var translation = vec2();
@@ -63,7 +63,7 @@
 
       function update(aspect, bbox) {
 
-        var rad = bbox.max.distanceTo(bbox.min) * scale / 2;
+        var rad = bbox.max.distanceTo(bbox.min) / 2;
 
         var center = vec3(0, 0, 0);
         var eye = vec3(0, 0, rad);
@@ -79,10 +79,10 @@
         var hAspect = (aspect > 1) ? aspect: 1;
         var vAspect = (aspect < 1) ? 1/aspect: 1;
 
-        camera.left = (-zoom * hAspect - translation.x) * scale * rad;
-        camera.right = (zoom * hAspect - translation.x) * scale * rad;
-        camera.top = (zoom * vAspect - translation.y) * scale * rad;
-        camera.bottom = (-zoom * vAspect - translation.y) * scale * rad;
+        camera.left = (-zoom * hAspect - translation.x) * rad;
+        camera.right = (zoom * hAspect - translation.x) * rad;
+        camera.top = (zoom * vAspect - translation.y) * rad;
+        camera.bottom = (-zoom * vAspect - translation.y) * rad;
         camera.near = 0;
         camera.far = 2 * rad;
 
