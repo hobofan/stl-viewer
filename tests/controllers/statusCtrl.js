@@ -7,5 +7,6 @@ describe('StatusCtrl', function () {
 
     var scope = {}, ctrl = $controller('StatusCtrl', {$scope:scope});
     expect(angular.isFunction(scope.getMode)).toBe(true);
+    expect(angular.isFunction(scope.getOrientation)).toBe(true);
   }));
 });

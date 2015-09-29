@@ -16,5 +16,6 @@ describe('StlOrient', function () {
     expect(stlOrient.orientations.ISOMETRIC).toBeDefined();
 
     expect(angular.isFunction(stlOrient.orient)).toBe(true);
+    expect(angular.isFunction(stlOrient.lastOrientation)).toBe(true);
   }));
 });

@@ -15,7 +15,11 @@
         ISOMETRIC: { yaw: Math.PI / 4.0, roll: Math.PI / 3.0 }
       };
 
+      var lastOrient = orientations.ISOMETRIC;
+
       function orient(o) {
+
+        lastOrient = o;
 
         var rot = new THREE.Quaternion();
         rot.multiply(quatFromAxisAngle(vec3(0, 0, 1), o.yaw));
@@ -23,9 +27,14 @@
         return rot;
       }
 
+      function lastOrientation() {
+        return lastOrient;
+      }
+
       return {
         orientations: orientations,
-        orient: orient
+        orient: orient,
+        lastOrientation: lastOrientation
       };
     }
   ]);

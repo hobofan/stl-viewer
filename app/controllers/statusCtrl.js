@@ -1,16 +1,16 @@
 (function () {
   "use strict";
 
-  app.controller('StatusCtrl', ['$scope', 'stlModes',
+  app.controller('StatusCtrl', ['$scope', 'stlModes', 'stlOrient',
 
-    function($scope, stlModes) {
+    function($scope, stlModes, stlOrient) {
 
       $scope.getMode = function () {
         return stlModes.getMode();
       };
 
       $scope.getOrientation = function () {
-        return "Isometric";
+        return stlOrient.lastOrientation();
       };
     }
   ]);
