@@ -8,6 +8,10 @@
       $scope.getMode = function () {
         return stlModes.getMode();
       };
+
+      $scope.getOrientation = function () {
+        return "Isometric";
+      };
     }
   ]);
 }());
