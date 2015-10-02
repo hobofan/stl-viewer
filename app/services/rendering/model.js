@@ -6,7 +6,7 @@
 
     function (stlMaterials, stlScene, stlRenderer, stlCamera, stlOrient) {
 
-      var mesh;
+      var mesh, wireframe, edges;
 
       function open(data) {
 
@@ -18,6 +18,8 @@
 
         if (mesh) {
           stlScene.remove(mesh);
+          stlScene.remove(wireframe);
+          stlScene.remove(edges);
         }
 
         var geometry = new THREE.BufferGeometry();
@@ -25,7 +27,16 @@
         geometry.addAttribute('normal', new THREE.BufferAttribute(res.normals, 3));
         mesh = new THREE.Mesh(geometry, stlMaterials.defaultMaterial);
 
+        wireframe = new THREE.WireframeHelper( mesh, 0x333 );
+        wireframe.visible = false;
+
+        edges = new THREE.EdgesHelper( mesh, 0x333 );
+        edges.visible = false;
+
         stlScene.add(mesh);
+        stlScene.add(wireframe);
+        stlScene.add(edges);
+
         stlCamera.orient(stlOrient.orient(stlOrient.orientations.ISOMETRIC));
         stlRenderer.render();
       }
