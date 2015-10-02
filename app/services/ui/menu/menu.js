@@ -30,6 +30,11 @@
 
 		    var m = menu.buildFromTemplate(template);
 		    menu.setApplicationMenu(m);
+
+        window.addEventListener('contextmenu', function (e) {
+          e.preventDefault();
+          m.popup(remote.getCurrentWindow());
+        }, false);
 		  }
 
       return {
