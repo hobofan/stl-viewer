@@ -9,9 +9,9 @@
       var mesh, wireframe, edges;
 
       var renderStyles = {
-        SHADED: 'Shaded',
-        WIREFRAME: 'Wireframe',
-        HARD_EDGES: 'Hard Edges'
+        SHADED: 'shaded',
+        WIREFRAME: 'wireframe',
+        HARD_EDGES: 'hard edges'
       };
 
       function open(data) {
@@ -49,6 +49,24 @@
 
       function setRenderStyle(style) {
 
+        switch (style) {
+          case renderStyles.WIREFRAME:
+            mesh.visible = false;
+            wireframe.visible = true;
+            edges.visible = false;
+            break;
+          case renderStyles.HARD_EDGES:
+            mesh.visible = false;
+            wireframe.visible = false;
+            edges.visible = true;
+            break;
+          case renderStyles.SHADED:
+          default:
+            mesh.visible = true;
+            wireframe.visible = false;
+            edges.visible = false;
+            break;
+        }
       }
 
       return {

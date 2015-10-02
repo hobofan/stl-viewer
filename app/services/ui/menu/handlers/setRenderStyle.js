@@ -2,14 +2,14 @@
 (function () {
   "use strict";
 
-  app.service('stlSetRenderStyle', ['stlRenderer',
+  app.service('stlSetRenderStyle', ['stlModel', 'stlRenderer',
     '$rootScope',
 
-    function (stlRenderer, $rootScope) {
+    function (stlModel, stlRenderer, $rootScope) {
 
       function set(item) {
 
-        // TODO
+        stlModel.setRenderStyle(item.label.toLowerCase());
 
         stlRenderer.render();
         $rootScope.$apply();
