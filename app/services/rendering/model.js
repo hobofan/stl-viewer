@@ -8,6 +8,12 @@
 
       var mesh, wireframe, edges;
 
+      var renderStyles = {
+        SHADED: 'Shaded',
+        WIREFRAME: 'Wireframe',
+        HARD_EDGES: 'Hard Edges'
+      };
+
       function open(data) {
 
         var res = (new StlReader()).read(data);
@@ -41,8 +47,14 @@
         stlRenderer.render();
       }
 
+      function setRenderStyle(style) {
+
+      }
+
       return {
-        open: open
+        open: open,
+        renderStyles: renderStyles,
+        setRenderStyle: setRenderStyle
       };
     }
   ]);
