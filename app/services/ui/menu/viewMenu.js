@@ -2,8 +2,9 @@
   "use strict";
 
   app.service('stlViewMenu', ['stlSetMode', 'stlSetOrientation',
+    'stlSetRenderStyle',
 
-    function (stlSetMode, stlSetOrientation) {
+    function (stlSetMode, stlSetOrientation, stlSetRenderStyle) {
 
       var menu =
         {
@@ -34,11 +35,15 @@
               submenu: [
                 {
                   label: 'Shaded',
-                  click: stlSetMode.set
+                  click: stlSetRenderStyle.set
                 },
                 {
-                  label: 'Lines',
-                  click: stlSetMode.set
+                  label: 'Wireframe',
+                  click: stlSetRenderStyle.set
+                },
+                {
+                  label: 'Hard Edges',
+                  click: stlSetRenderStyle.set
                 }
               ]
             },
