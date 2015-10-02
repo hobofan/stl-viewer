@@ -9,7 +9,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/tmycnw/stl-viewer.git"
+    "url": "https://github.com/tatx/stl-viewer.git"
   },
   "keywords": [
     "stl",
@@ -19,12 +19,12 @@
     "webgl",
     "electron"
   ],
-  "author": "Tommy Conway",
+  "author": "Tathagata Chakraborty",
   "license": "GPL-2.0",
   "bugs": {
-    "url": "https://github.com/tmycnw/stl-viewer/issues"
+    "url": "https://github.com/tatx/stl-viewer/issues"
   },
-  "homepage": "https://github.com/tmycnw/stl-viewer",
+  "homepage": "https://github.com/tatx/stl-viewer",
   "devDependencies": {
     "angular-mocks": "^1.4.3",
     "grunt": "^0.4.5",

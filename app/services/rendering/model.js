@@ -10,24 +10,24 @@
 
       function open(data) {
 
-        (new StlReader()).read(data, function (vn, v, n) {
+        var res = (new StlReader()).read(data);
 
-          if (v && v.length > 3) {
+        if (!res) {
+          return;
+        }
 
-            if (mesh) {
-              stlScene.remove(mesh);
-            }
+        if (mesh) {
+          stlScene.remove(mesh);
+        }
 
-            var geometry = new THREE.BufferGeometry();
-            geometry.addAttribute('position', new THREE.BufferAttribute(v, 3));
-            geometry.addAttribute('normal', new THREE.BufferAttribute(n, 3));
-            mesh = new THREE.Mesh(geometry, stlMaterials.defaultMaterial);
+        var geometry = new THREE.BufferGeometry();
+        geometry.addAttribute('position', new THREE.BufferAttribute(res.vertices, 3));
+        geometry.addAttribute('normal', new THREE.BufferAttribute(res.normals, 3));
+        mesh = new THREE.Mesh(geometry, stlMaterials.defaultMaterial);
 
-            stlScene.add(mesh);
-            stlCamera.orient(stlOrient.orient(stlOrient.orientations.ISOMETRIC));
-            stlRenderer.render();
-          }
-        });
+        stlScene.add(mesh);
+        stlCamera.orient(stlOrient.orient(stlOrient.orientations.ISOMETRIC));
+        stlRenderer.render();
       }
 
       return {
