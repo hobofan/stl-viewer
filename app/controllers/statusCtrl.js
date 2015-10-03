@@ -1,9 +1,9 @@
 (function () {
   "use strict";
 
-  app.controller('StatusCtrl', ['$scope', 'stlModes', 'stlOrient',
+  app.controller('StatusCtrl', ['$scope', 'stlModes', 'stlOrient', 'stlModel',
 
-    function($scope, stlModes, stlOrient) {
+    function($scope, stlModes, stlOrient, stlModel) {
 
       $scope.getMode = function () {
         return stlModes.getMode();
@@ -14,7 +14,7 @@
       };
 
       $scope.getRenderStyle = function () {
-        return stlOrient.lastOrientation();
+        return stlModel.getRenderStyle();
       };
     }
   ]);

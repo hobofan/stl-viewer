@@ -14,6 +14,8 @@
         HARD_EDGES: 'hard edges'
       };
 
+      var activeRenderStyle = renderStyles.SHADED;
+
       function open(data) {
 
         var res = (new StlReader()).read(data);
@@ -49,6 +51,8 @@
 
       function setRenderStyle(style) {
 
+        activeRenderStyle = style;
+
         switch (style) {
           case renderStyles.WIREFRAME:
             mesh.visible = false;
@@ -69,10 +73,15 @@
         }
       }
 
+      function getRenderStyle() {
+        return activeRenderStyle;
+      }
+
       return {
         open: open,
         renderStyles: renderStyles,
-        setRenderStyle: setRenderStyle
+        setRenderStyle: setRenderStyle,
+        getRenderStyle: getRenderStyle
       };
     }
   ]);

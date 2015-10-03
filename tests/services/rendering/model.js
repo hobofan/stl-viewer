@@ -14,5 +14,6 @@ describe('StlModel', function () {
       expect(stlModel.renderStyles.WIREFRAME).toBeDefined();
       expect(stlModel.renderStyles.HARD_EDGES).toBeDefined();
       expect(angular.isFunction(stlModel.setRenderStyle)).toBe(true);
+      expect(angular.isFunction(stlModel.getRenderStyle)).toBe(true);
   }));
 });
