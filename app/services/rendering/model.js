@@ -45,6 +45,8 @@
         stlScene.add(wireframe);
         stlScene.add(edges);
 
+        setRenderStyle(activeRenderStyle);
+
         stlCamera.orient(stlOrient.orient(stlOrient.orientations.ISOMETRIC));
         stlRenderer.render();
       }
