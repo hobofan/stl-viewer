@@ -16,6 +16,12 @@ describe('StlModel', function () {
       expect(angular.isFunction(stlModel.getRenderStyle)).toBe(true);
   }));
 
+  it('should have the shaded mode set as default',
+    inject(function (stlModel) {
+
+      expect(stlModel.getRenderStyle()).toEqual(stlModel.renderStyles.SHADED);
+  }));
+
   it('should have return the render style that was set earlier',
     inject(function (stlModel) {
 
