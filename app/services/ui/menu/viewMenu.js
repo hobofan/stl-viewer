@@ -42,11 +42,6 @@
                   label: 'Wireframe',
                   click: stlSetRenderStyle.set,
                   accelerator: 'Ctrl+Alt+W'
-                },
-                {
-                  label: 'Hard Edges',
-                  click: stlSetRenderStyle.set,
-                  accelerator: 'Ctrl+Alt+E'
                 }
               ]
             },

@@ -12,7 +12,6 @@ describe('StlModel', function () {
       expect(stlModel.renderStyles).toBeDefined();
       expect(stlModel.renderStyles.SHADED).toBeDefined();
       expect(stlModel.renderStyles.WIREFRAME).toBeDefined();
-      expect(stlModel.renderStyles.HARD_EDGES).toBeDefined();
       expect(angular.isFunction(stlModel.setRenderStyle)).toBe(true);
       expect(angular.isFunction(stlModel.getRenderStyle)).toBe(true);
   }));
@@ -23,7 +22,7 @@ describe('StlModel', function () {
       stlModel.setRenderStyle(stlModel.renderStyles.WIREFRAME);
       expect(stlModel.getRenderStyle()).toEqual(stlModel.renderStyles.WIREFRAME);
 
-      stlModel.setRenderStyle(stlModel.renderStyles.HARD_EDGES);
-      expect(stlModel.getRenderStyle()).toEqual(stlModel.renderStyles.HARD_EDGES);
+      stlModel.setRenderStyle(stlModel.renderStyles.SHADED);
+      expect(stlModel.getRenderStyle()).toEqual(stlModel.renderStyles.SHADED);
   }));
 });
