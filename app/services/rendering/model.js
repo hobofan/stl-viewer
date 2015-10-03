@@ -52,6 +52,9 @@
       function setRenderStyle(style) {
 
         activeRenderStyle = style;
+        if (!mesh) {
+          return;
+        }
 
         switch (style) {
           case renderStyles.WIREFRAME:
