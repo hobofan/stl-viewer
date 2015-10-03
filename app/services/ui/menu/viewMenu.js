@@ -35,15 +35,18 @@
               submenu: [
                 {
                   label: 'Shaded',
-                  click: stlSetRenderStyle.set
+                  click: stlSetRenderStyle.set,
+                  accelerator: 'Ctrl+Alt+S'
                 },
                 {
                   label: 'Wireframe',
-                  click: stlSetRenderStyle.set
+                  click: stlSetRenderStyle.set,
+                  accelerator: 'Ctrl+Alt+W'
                 },
                 {
                   label: 'Hard Edges',
-                  click: stlSetRenderStyle.set
+                  click: stlSetRenderStyle.set,
+                  accelerator: 'Ctrl+Alt+E'
                 }
               ]
             },
