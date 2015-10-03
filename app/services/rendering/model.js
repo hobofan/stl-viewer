@@ -65,7 +65,6 @@
             edges.visible = true;
             break;
           case renderStyles.SHADED:
-          default:
             mesh.visible = true;
             wireframe.visible = false;
             edges.visible = false;
