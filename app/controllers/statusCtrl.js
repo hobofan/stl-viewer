@@ -12,6 +12,10 @@
       $scope.getOrientation = function () {
         return stlOrient.lastOrientation();
       };
+
+      $scope.getRenderStyle = function () {
+        return stlOrient.lastOrientation();
+      };
     }
   ]);
 }());
