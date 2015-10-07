@@ -4,7 +4,7 @@
   "description": "An STL file viewer",
   "main": "index.js",
   "scripts": {
-    "test": "karma start",
+    "test": "karma start --single-run",
     "start": "electron ."
   },
   "repository": {
