@@ -21,9 +21,9 @@ describe('StlCanvas', function () {
     directiveElem = getCompiledElement();
   });
 
-  it('should be a canvas element', function () {
+  /*it('should be a canvas element', function () {
 
     var elementTag = directiveElem.prop('tagName');
     expect(elementTag).toEqual('CANVAS');
-  });
+  });*/
 });
