@@ -7,9 +7,7 @@
     function (stlRenderer, stlMouse, stlMousePos, stlCamera) {
 
       return {
-        restrict: 'E',
-        template: '<canvas></canvas>',
-        replace: true,
+        restrict: 'A',
         link: function (scope, element) {
 
           stlRenderer.init(element[0]);
