@@ -3,7 +3,7 @@
 [![License](https://img.shields.io/badge/license-GPL%20v2-green.svg)](https://www.gnu.org/licenses/old-licenses/gpl-2.0.en.html)
 [![Build Status](https://travis-ci.org/tatx/stl-viewer.svg?branch=master)](https://travis-ci.org/tatx/stl-viewer)
 
-A STL (Stereolithography) file viewer built on [Electron](http://electron.atom.io/)
+A desktop STL (Stereolithography) file viewer built on [Electron](http://electron.atom.io/)
 
 ### Installation
 
