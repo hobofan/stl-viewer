@@ -1,7 +1,2 @@
 
-var app = angular.module('stlApp', [
-
-  function () {
-    "use strict";
-  }
-]);
+var app = angular.module('stlApp', []);
