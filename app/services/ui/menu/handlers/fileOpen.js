@@ -14,22 +14,33 @@
         dialog.showOpenDialog(remote.getCurrentWindow(), {
           properties: [ 'openFile'],
           filters: [{ name: 'STL', extensions: ['stl'] }]},
-          function (fileName) {
-            if (fileName && fileName.length > 0) {
-              fs.readFile(fileName[0], function read(err, data) {
-                if (err) {
-                  return;
-                }
-
-                stlModel.open(stlBuffer.toArrayBuffer(data));
-              });
+          function (fileNames) {
+            if (fileNames && fileNames.length > 0) {
+              openPath(fileNames[0]);
             }
           }
         );
       }
 
+      function openPath(filePath) {
+        var remote = require('remote');
+        var fs = remote.require('fs');
+
+        if (filePath && filePath.length > 0) {
+          fs.readFile(filePath, function read(err, data) {
+            if (err) {
+              console.log(err);
+              return;
+            }
+
+            stlModel.open(stlBuffer.toArrayBuffer(data));
+          });
+        }
+      }
+
       return {
-        open: open
+        open: open,
+        openPath: openPath
       };
     }
   ]);
