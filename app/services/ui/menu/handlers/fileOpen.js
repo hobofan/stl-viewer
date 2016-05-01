@@ -1,9 +1,9 @@
 (function () {
   "use strict";
 
-  app.service('stlFileOpen', ['stlModel', 'stlBuffer',
+  app.service('stlFileOpen', ['stlModel', 'stlBuffer', 'fileWatch',
 
-    function (stlModel, stlBuffer) {
+    function (stlModel, stlBuffer, fileWatch) {
 
       function open() {
 
@@ -34,6 +34,10 @@
             }
 
             stlModel.open(stlBuffer.toArrayBuffer(data));
+            fileWatch.watchPath(filePath,
+              function(changedPath) {
+                openPath(filePath);
+              });
           });
         }
       }

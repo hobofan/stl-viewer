@@ -41,6 +41,7 @@
   "dependencies": {
     "angular": "^1.4.3",
     "karma-firefox-launcher": "^0.1.6",
+    "pathwatcher": "^6.5.0",
     "stl-reader": "^3.0.1",
     "three": "^0.71.0"
   }
